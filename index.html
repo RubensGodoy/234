@@ -996,6 +996,16 @@
 	<meta name="generator" content="WP Rocket 3.19.1.2"
 		data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_image_dimensions wpr_minify_css wpr_cdn wpr_preload_links wpr_desktop">
 	<style>
+		/* Círculo girando continuamente */
+		@keyframes giroContinuo {
+			from { transform: rotate(0deg); }
+			to { transform: rotate(360deg); }
+		}
+		.elementor-element-f68720a img {
+			animation: giroContinuo 25s linear infinite !important;
+			transform-origin: center center;
+		}
+
 		/* Correção: Força exibição de elementos com lag e impede que sumam no scroll */
 		.scroll-left,
 		.scroll-right,
@@ -2597,13 +2607,7 @@
 						<div class="elementor-element elementor-element-bab28f8 blur elementor-widget elementor-widget-image"
 							data-id="bab28f8" data-element_type="widget" data-e-type="widget"
 							data-widget_type="image.default">
-							<img decoding="async" width="1214" height="668"
-								src="images/Design%20sem%20nome%20(24)%20(1).png"
-								class="attachment-full size-full wp-image-130" alt=""
-								data-lazy-src="images/Design%20sem%20nome%20(24)%20(1).png"><noscript><img
-									loading="lazy" decoding="async" width="1214" height="668"
-									src="images/Design%20sem%20nome%20(24)%20(1).png"
-									class="attachment-full size-full wp-image-130" alt="" /></noscript>
+							<div class="glow-effect-dmd" style="width: 100%; max-width: 800px; height: 600px; background: radial-gradient(circle, rgba(2,224,206,0.2) 0%, transparent 60%); filter: blur(60px); border-radius: 50%; margin: -50px auto 0 auto; position: relative; z-index: 0;"></div>
 						</div>
 						<div class="elementor-element elementor-element-787c282 elementor-absolute elementor-widget elementor-widget-image"
 							data-id="787c282" data-element_type="widget" data-e-type="widget" data-settings="{"
