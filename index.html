@@ -162,22 +162,27 @@
 
 
 	<link crossorigin="" data-rocket-preconnect="" href="https://cdn.utmify.com.br" rel="preconnect">
+	<link 
+  rel="preload" 
+  as="image"
+  href="/images/cell-1.jpg"
+  fetchpriority="high">
+	<meta name="robots" content="max-image-preview:large">
 
-<link 
-rel="preload" 
-as="image" 
-href="/images/cell-1.jpg" 
-fetchpriority="high">
+	<link rel="alternate" type="application/rss+xml" title="Feed para Low Ticket do Zero »"
+		href="https://guiadogui.com/feed/">
+	<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Low Ticket do Zero »"
+		href="https://guiadogui.com/comments/feed/">
+	<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"
+		href="https://guiadogui.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fguiadogui.com%2F">
+	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
+		href="https://guiadogui.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fguiadogui.com%2F&format=xml">
+	<style id="wp-img-auto-sizes-contain-inline-css">
+		img:is([sizes=auto i], [sizes^="auto," i]) {
+			contain-intrinsic-size: 3000px 1500px
+		}
 
-<meta name="robots" content="max-image-preview:large">
-
-<style id="wp-img-auto-sizes-contain-inline-css">
-	img:is([sizes=auto i], [sizes^="auto," i]) {
-		contain-intrinsic-size: 3000px 1500px
-	}
-
-	/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
-</style>
+		/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
 
 		/* Otimização de Performance e Fluidez */
 		.scroll-bottom,
