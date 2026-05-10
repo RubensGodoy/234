@@ -60,6 +60,28 @@
 			width: 100% !important;
 		}
 
+		/* Ajuste do Carrossel de Provas Sociais */
+		.elementor-element-0690b11 {
+			max-width: 900px !important;
+			/* Limita largura máxima no desktop */
+			margin: 0 auto !important;
+		}
+
+		.elementor-element-0690b11 .swiper-slide img {
+			max-height: 500px !important;
+			/* Diminui altura das provas (estavam ~730px) */
+			width: auto !important;
+			border-radius: 12px !important;
+			object-fit: contain !important;
+		}
+
+		@media (max-width: 767px) {
+			.elementor-element-0690b11 .swiper-slide img {
+				max-height: 400px !important;
+				/* Ainda menor no mobile */
+			}
+		}
+
 		/* Ajustes Responsivos para Mobile */
 		@media (max-width: 767px) {
 			.elementor-element-2e691e7 .elementor-heading-title {
@@ -2636,8 +2658,7 @@
 				</div>
 
 				<div class="elementor-element elementor-element-0690b11 blur elementor-widget elementor-widget-image-carousel"
-					data-id="0690b11" data-element_type="widget" data-e-type="widget" data-settings="{"
-					slides_to_show":"4","slides_to_show_mobile":"2","navigation":"none","autoplay_speed":0,"speed":5000,"image_spacing_custom":{"unit":"px","size":10,"sizes":[]},"autoplay":"yes","infinite":"yes","image_spacing_custom_tablet":{"unit":"px","size":"","sizes":[]},"image_spacing_custom_mobile":{"unit":"px","size":"","sizes":[]}}"=""
+					data-id="0690b11" data-element_type="widget" data-e-type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;4&quot;,&quot;slides_to_show_mobile&quot;:&quot;2&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay_speed&quot;:3000,&quot;speed&quot;:500,&quot;image_spacing_custom&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:10,&quot;sizes&quot;:[]},&quot;autoplay&quot;:&quot;yes&quot;,&quot;infinite&quot;:&quot;yes&quot;,&quot;image_spacing_custom_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;image_spacing_custom_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 					data-widget_type="image-carousel.default">
 					<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel"
 						aria-label="Carrossel de imagens" dir="rtl">
@@ -3790,6 +3811,33 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/guiadogui.com\/wp-admin\/
 					summary.setAttribute('aria-expanded', 'true');
 				}
 			}, true); // Usa fase de captura para interceptar o clique antes de outros scripts
+		})();
+
+		// 5. Correção e Automatização do Carrossel de Provas Sociais
+		(function () {
+			function fixCarousel() {
+				const carouselEl = document.querySelector('.elementor-element-0690b11 .swiper');
+				if (carouselEl && carouselEl.swiper) {
+					const swiper = carouselEl.swiper;
+					// Força configurações de autoplay
+					if (swiper.params) {
+						if (!swiper.params.autoplay || typeof swiper.params.autoplay !== 'object') {
+							swiper.params.autoplay = {};
+						}
+						swiper.params.autoplay.delay = 3000;
+						swiper.params.autoplay.disableOnInteraction = false;
+						swiper.params.speed = 500;
+						if (swiper.autoplay) {
+							swiper.autoplay.stop();
+							swiper.autoplay.start();
+						}
+					}
+					// Ajusta altura via JS se necessário para garantir
+					carouselEl.style.maxHeight = '500px';
+				}
+			}
+			window.addEventListener('load', () => setTimeout(fixCarousel, 1000));
+			let c = 0; const i = setInterval(() => { fixCarousel(); if (c++ > 5) clearInterval(i); }, 2000);
 		})();
 	</script>
 
