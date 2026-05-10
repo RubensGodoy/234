@@ -1,41 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-<style id="performance-master-fix">
-    /*
-     * FIX DEFINITIVO DE PERFORMANCE E SCROLL
-     * Remove animaÃ§Ãµes de entrada que atrasam o carregamento e causam repetiÃ§Ã£o
-     */
-    .scroll-bottom, .scroll-top, .scroll-left, .scroll-right,
-    .blur, .elementor-invisible, .animated, .elementor-motion-effects-element,
-    [data-settings*="animation"] {
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-        filter: none !important;
-        transition: none !important;
-        animation: none !important;
-    }
-
-    /* ForÃ§a rolagem nativa, remove travamentos do Lenis */
-    html, body {
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-        height: auto !important;
-        scroll-behavior: smooth !important;
-        scroll-snap-type: none !important;
-        -webkit-overflow-scrolling: touch !important;
-        touch-action: auto !important;
-    }
-</style>
 	<meta charset="UTF-8">
 	<script>if (navigator.userAgent.match(/MSIE|Internet Explorer/i) || navigator.userAgent.match(/Trident\/7\..*?rv:11/i)) { var href = document.location.href; if (!href.match(/[?&]nowprocket/)) { if (href.indexOf("?") == -1) { if (href.indexOf("#") == -1) { document.location.href = href + "?nowprocket=1" } else { document.location.href = href.replace("#", "?nowprocket=1#") } } else { if (href.indexOf("#") == -1) { document.location.href = href + "&nowprocket=1" } else { document.location.href = href.replace("#", "&nowprocket=1#") } } } }</script>
-	<!-- RocketLazyLoadScripts Removido -->
+	<script>(() => { class RocketLazyLoadScripts { constructor() { this.v = "2.0.3", this.userEvents = ["keydown", "keyup", "mousedown", "mouseup", "mousemove", "mouseover", "mouseenter", "mouseout", "mouseleave", "touchmove", "touchstart", "touchend", "touchcancel", "wheel", "click", "dblclick", "input", "visibilitychange"], this.attributeEvents = ["onblur", "onclick", "oncontextmenu", "ondblclick", "onfocus", "onmousedown", "onmouseenter", "onmouseleave", "onmousemove", "onmouseout", "onmouseover", "onmouseup", "onmousewheel", "onscroll", "onsubmit"] } async t() { this.i(), this.o(), /iP(ad|hone)/.test(navigator.userAgent) && this.h(), this.u(), this.l(this), this.m(), this.k(this), this.p(this), this._(), await Promise.all([this.R(), this.L()]), this.lastBreath = Date.now(), this.S(this), this.P(), this.D(), this.O(), this.M(), await this.C(this.delayedScripts.normal), await this.C(this.delayedScripts.defer), await this.C(this.delayedScripts.async), this.F("domReady"), await this.T(), await this.j(), await this.I(), this.F("windowLoad"), await this.A(), window.dispatchEvent(new Event("rocket-allScriptsLoaded")), this.everythingLoaded = !0, this.lastTouchEnd && await new Promise((t => setTimeout(t, 500 - Date.now() + this.lastTouchEnd))), this.H(), this.F("all"), this.U(), this.W() } i() { this.CSPIssue = sessionStorage.getItem("rocketCSPIssue"), document.addEventListener("securitypolicyviolation", (t => { this.CSPIssue || "script-src-elem" !== t.violatedDirective || "data" !== t.blockedURI || (this.CSPIssue = !0, sessionStorage.setItem("rocketCSPIssue", !0)) }), { isRocket: !0 }) } o() { window.addEventListener("pageshow", (t => { this.persisted = t.persisted, this.realWindowLoadedFired = !0 }), { isRocket: !0 }), window.addEventListener("pagehide", (() => { this.onFirstUserAction = null }), { isRocket: !0 }) } h() { let t; function e(e) { t = e } window.addEventListener("touchstart", e, { isRocket: !0 }), window.addEventListener("touchend", (function i(o) { Math.abs(o.changedTouches[0].pageX - t.changedTouches[0].pageX) < 10 && Math.abs(o.changedTouches[0].pageY - t.changedTouches[0].pageY) < 10 && o.timeStamp - t.timeStamp < 200 && (o.target.dispatchEvent(new PointerEvent("click", { target: o.target, bubbles: !0, cancelable: !0, detail: 1 })), event.preventDefault(), window.removeEventListener("touchstart", e, { isRocket: !0 }), window.removeEventListener("touchend", i, { isRocket: !0 })) }), { isRocket: !0 }) } q(t) { this.userActionTriggered || ("mousemove" !== t.type || this.firstMousemoveIgnored ? "keyup" === t.type || "mouseover" === t.type || "mouseout" === t.type || (this.userActionTriggered = !0, this.onFirstUserAction && this.onFirstUserAction()) : this.firstMousemoveIgnored = !0), "click" === t.type && t.preventDefault(), this.savedUserEvents.length > 0 && (t.stopPropagation(), t.stopImmediatePropagation()), "touchstart" === this.lastEvent && "touchend" === t.type && (this.lastTouchEnd = Date.now()), "click" === t.type && (this.lastTouchEnd = 0), this.lastEvent = t.type, this.savedUserEvents.push(t) } u() { this.savedUserEvents = [], this.userEventHandler = this.q.bind(this), this.userEvents.forEach((t => window.addEventListener(t, this.userEventHandler, { passive: !1, isRocket: !0 }))) } U() { this.userEvents.forEach((t => window.removeEventListener(t, this.userEventHandler, { passive: !1, isRocket: !0 }))), this.savedUserEvents.forEach((t => { t.target.dispatchEvent(new window[t.constructor.name](t.type, t)) })) } m() { this.eventsMutationObserver = new MutationObserver((t => { const e = "return false"; for (const i of t) { if ("attributes" === i.type) { const t = i.target.getAttribute(i.attributeName); t && t !== e && (i.target.setAttribute("data-rocket-" + i.attributeName, t), i.target["rocket" + i.attributeName] = new Function("event", t), i.target.setAttribute(i.attributeName, e)) } "childList" === i.type && i.addedNodes.forEach((t => { if (t.nodeType === Node.ELEMENT_NODE) for (const i of t.attributes) this.attributeEvents.includes(i.name) && i.value && "" !== i.value && (t.setAttribute("data-rocket-" + i.name, i.value), t["rocket" + i.name] = new Function("event", i.value), t.setAttribute(i.name, e)) })) } })), this.eventsMutationObserver.observe(document, { subtree: !0, childList: !0, attributeFilter: this.attributeEvents }) } H() { this.eventsMutationObserver.disconnect(), this.attributeEvents.forEach((t => { document.querySelectorAll("[data-rocket-" + t + "]").forEach((e => { e.setAttribute(t, e.getAttribute("data-rocket-" + t)), e.removeAttribute("data-rocket-" + t) })) })) } k(t) { Object.defineProperty(HTMLElement.prototype, "onclick", { get() { return this.rocketonclick || null }, set(e) { this.rocketonclick = e, this.setAttribute(t.everythingLoaded ? "onclick" : "data-rocket-onclick", "this.rocketonclick(event)") } }) } S(t) { function e(e, i) { let o = e[i]; e[i] = null, Object.defineProperty(e, i, { get: () => o, set(s) { t.everythingLoaded ? o = s : e["rocket" + i] = o = s } }) } e(document, "onreadystatechange"), e(window, "onload"), e(window, "onpageshow"); try { Object.defineProperty(document, "readyState", { get: () => t.rocketReadyState, set(e) { t.rocketReadyState = e }, configurable: !0 }), document.readyState = "loading" } catch (t) { console.log("WPRocket DJE readyState conflict, bypassing") } } l(t) { this.originalAddEventListener = EventTarget.prototype.addEventListener, this.originalRemoveEventListener = EventTarget.prototype.removeEventListener, this.savedEventListeners = [], EventTarget.prototype.addEventListener = function (e, i, o) { o && o.isRocket || !t.B(e, this) && !t.userEvents.includes(e) || t.B(e, this) && !t.userActionTriggered || e.startsWith("rocket-") || t.everythingLoaded ? t.originalAddEventListener.call(this, e, i, o) : t.savedEventListeners.push({ target: this, remove: !1, type: e, func: i, options: o }) }, EventTarget.prototype.removeEventListener = function (e, i, o) { o && o.isRocket || !t.B(e, this) && !t.userEvents.includes(e) || t.B(e, this) && !t.userActionTriggered || e.startsWith("rocket-") || t.everythingLoaded ? t.originalRemoveEventListener.call(this, e, i, o) : t.savedEventListeners.push({ target: this, remove: !0, type: e, func: i, options: o }) } } F(t) { "all" === t && (EventTarget.prototype.addEventListener = this.originalAddEventListener, EventTarget.prototype.removeEventListener = this.originalRemoveEventListener), this.savedEventListeners = this.savedEventListeners.filter((e => { let i = e.type, o = e.target || window; return "domReady" === t && "DOMContentLoaded" !== i && "readystatechange" !== i || ("windowLoad" === t && "load" !== i && "readystatechange" !== i && "pageshow" !== i || (this.B(i, o) && (i = "rocket-" + i), e.remove ? o.removeEventListener(i, e.func, e.options) : o.addEventListener(i, e.func, e.options), !1)) })) } p(t) { let e; function i(e) { return t.everythingLoaded ? e : e.split(" ").map((t => "load" === t || t.startsWith("load.") ? "rocket-jquery-load" : t)).join(" ") } function o(o) { function s(e) { const s = o.fn[e]; o.fn[e] = o.fn.init.prototype[e] = function () { return this[0] === window && t.userActionTriggered && ("string" == typeof arguments[0] || arguments[0] instanceof String ? arguments[0] = i(arguments[0]) : "object" == typeof arguments[0] && Object.keys(arguments[0]).forEach((t => { const e = arguments[0][t]; delete arguments[0][t], arguments[0][i(t)] = e }))), s.apply(this, arguments), this } } if (o && o.fn && !t.allJQueries.includes(o)) { const e = { DOMContentLoaded: [], "rocket-DOMContentLoaded": [] }; for (const t in e) document.addEventListener(t, (() => { e[t].forEach((t => t())) }), { isRocket: !0 }); o.fn.ready = o.fn.init.prototype.ready = function (i) { function s() { parseInt(o.fn.jquery) > 2 ? setTimeout((() => i.bind(document)(o))) : i.bind(document)(o) } return t.realDomReadyFired ? !t.userActionTriggered || t.fauxDomReadyFired ? s() : e["rocket-DOMContentLoaded"].push(s) : e.DOMContentLoaded.push(s), o([]) }, s("on"), s("one"), s("off"), t.allJQueries.push(o) } e = o } t.allJQueries = [], o(window.jQuery), Object.defineProperty(window, "jQuery", { get: () => e, set(t) { o(t) } }) } P() { const t = new Map; document.write = document.writeln = function (e) { const i = document.currentScript, o = document.createRange(), s = i.parentElement; let n = t.get(i); void 0 === n && (n = i.nextSibling, t.set(i, n)); const c = document.createDocumentFragment(); o.setStart(c, 0), c.appendChild(o.createContextualFragment(e)), s.insertBefore(c, n) } } async R() { return new Promise((t => { this.userActionTriggered ? t() : this.onFirstUserAction = t })) } async L() { return new Promise((t => { document.addEventListener("DOMContentLoaded", (() => { this.realDomReadyFired = !0, t() }), { isRocket: !0 }) })) } async I() { return this.realWindowLoadedFired ? Promise.resolve() : new Promise((t => { window.addEventListener("load", t, { isRocket: !0 }) })) } M() { this.pendingScripts = []; this.scriptsMutationObserver = new MutationObserver((t => { for (const e of t) e.addedNodes.forEach((t => { "SCRIPT" !== t.tagName || t.noModule || t.isWPRocket || this.pendingScripts.push({ script: t, promise: new Promise((e => { const i = () => { const i = this.pendingScripts.findIndex((e => e.script === t)); i >= 0 && this.pendingScripts.splice(i, 1), e() }; t.addEventListener("load", i, { isRocket: !0 }), t.addEventListener("error", i, { isRocket: !0 }), setTimeout(i, 1e3) })) }) })) })), this.scriptsMutationObserver.observe(document, { childList: !0, subtree: !0 }) } async j() { await this.J(), this.pendingScripts.length ? (await this.pendingScripts[0].promise, await this.j()) : this.scriptsMutationObserver.disconnect() } D() { this.delayedScripts = { normal: [], async: [], defer: [] }, document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach((t => { t.hasAttribute("data-rocket-src") ? t.hasAttribute("async") && !1 !== t.async ? this.delayedScripts.async.push(t) : t.hasAttribute("defer") && !1 !== t.defer || "module" === t.getAttribute("data-rocket-type") ? this.delayedScripts.defer.push(t) : this.delayedScripts.normal.push(t) : this.delayedScripts.normal.push(t) })) } async _() { await this.L(); let t = []; document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach((e => { let i = e.getAttribute("data-rocket-src"); if (i && !i.startsWith("data:")) { i.startsWith("//") && (i = location.protocol + i); try { const o = new URL(i).origin; o !== location.origin && t.push({ src: o, crossOrigin: e.crossOrigin || "module" === e.getAttribute("data-rocket-type") }) } catch (t) { } } })), t = [...new Map(t.map((t => [JSON.stringify(t), t]))).values()], this.N(t, "preconnect") } async $(t) { if (await this.G(), !0 !== t.noModule || !("noModule" in HTMLScriptElement.prototype)) return new Promise((e => { let i; function o() { (i || t).setAttribute("data-rocket-status", "executed"), e() } try { if (navigator.userAgent.includes("Firefox/") || "" === navigator.vendor || this.CSPIssue) i = document.createElement("script"), [...t.attributes].forEach((t => { let e = t.nodeName; "type" !== e && ("data-rocket-type" === e && (e = "type"), "data-rocket-src" === e && (e = "src"), i.setAttribute(e, t.nodeValue)) })), t.text && (i.text = t.text), t.nonce && (i.nonce = t.nonce), i.hasAttribute("src") ? (i.addEventListener("load", o, { isRocket: !0 }), i.addEventListener("error", (() => { i.setAttribute("data-rocket-status", "failed-network"), e() }), { isRocket: !0 }), setTimeout((() => { i.isConnected || e() }), 1)) : (i.text = t.text, o()), i.isWPRocket = !0, t.parentNode.replaceChild(i, t); else { const i = t.getAttribute("data-rocket-type"), s = t.getAttribute("data-rocket-src"); i ? (t.type = i, t.removeAttribute("data-rocket-type")) : t.removeAttribute("type"), t.addEventListener("load", o, { isRocket: !0 }), t.addEventListener("error", (i => { this.CSPIssue && i.target.src.startsWith("data:") ? (console.log("WPRocket: CSP fallback activated"), t.removeAttribute("src"), this.$(t).then(e)) : (t.setAttribute("data-rocket-status", "failed-network"), e()) }), { isRocket: !0 }), s ? (t.fetchPriority = "high", t.removeAttribute("data-rocket-src"), t.src = s) : t.src = "data:text/javascript;base64," + window.btoa(unescape(encodeURIComponent(t.text))) } } catch (i) { t.setAttribute("data-rocket-status", "failed-transform"), e() } })); t.setAttribute("data-rocket-status", "skipped") } async C(t) { const e = t.shift(); return e ? (e.isConnected && await this.$(e), this.C(t)) : Promise.resolve() } O() { this.N([...this.delayedScripts.normal, ...this.delayedScripts.defer, ...this.delayedScripts.async], "preload") } N(t, e) { this.trash = this.trash || []; let i = !0; var o = document.createDocumentFragment(); t.forEach((t => { const s = t.getAttribute && t.getAttribute("data-rocket-src") || t.src; if (s && !s.startsWith("data:")) { const n = document.createElement("link"); n.href = s, n.rel = e, "preconnect" !== e && (n.as = "script", n.fetchPriority = i ? "high" : "low"), t.getAttribute && "module" === t.getAttribute("data-rocket-type") && (n.crossOrigin = !0), t.crossOrigin && (n.crossOrigin = t.crossOrigin), t.integrity && (n.integrity = t.integrity), t.nonce && (n.nonce = t.nonce), o.appendChild(n), this.trash.push(n), i = !1 } })), document.head.appendChild(o) } W() { this.trash.forEach((t => t.remove())) } async T() { try { document.readyState = "interactive" } catch (t) { } this.fauxDomReadyFired = !0; try { await this.G(), document.dispatchEvent(new Event("rocket-readystatechange")), await this.G(), document.rocketonreadystatechange && document.rocketonreadystatechange(), await this.G(), document.dispatchEvent(new Event("rocket-DOMContentLoaded")), await this.G(), window.dispatchEvent(new Event("rocket-DOMContentLoaded")) } catch (t) { console.error(t) } } async A() { try { document.readyState = "complete" } catch (t) { } try { await this.G(), document.dispatchEvent(new Event("rocket-readystatechange")), await this.G(), document.rocketonreadystatechange && document.rocketonreadystatechange(), await this.G(), window.dispatchEvent(new Event("rocket-load")), await this.G(), window.rocketonload && window.rocketonload(), await this.G(), this.allJQueries.forEach((t => t(window).trigger("rocket-jquery-load"))), await this.G(); const t = new Event("rocket-pageshow"); t.persisted = this.persisted, window.dispatchEvent(t), await this.G(), window.rocketonpageshow && window.rocketonpageshow({ persisted: this.persisted }) } catch (t) { console.error(t) } } async G() { Date.now() - this.lastBreath > 45 && (await this.J(), this.lastBreath = Date.now()) } async J() { return document.hidden ? new Promise((t => setTimeout(t))) : new Promise((t => requestAnimationFrame(t))) } B(t, e) { return e === document && "readystatechange" === t || (e === document && "DOMContentLoaded" === t || (e === window && "DOMContentLoaded" === t || (e === window && "load" === t || e === window && "pageshow" === t))) } static run() { (new RocketLazyLoadScripts).t() } } RocketLazyLoadScripts.run() })();</script>
 
 	<title>Low Ticket do Zero</title>
 	<style>
-		/* ForÃ§a a visibilidade do conteÃºdo do FAQ quando aberto */
+		/* Força a visibilidade do conteúdo do FAQ quando aberto */
 		.elementor-widget-n-accordion .e-n-accordion-item[open]>.e-con {
 			display: flex !important;
 			height: auto !important;
@@ -97,7 +70,7 @@
 		/* Ajuste do Carrossel de Provas Sociais */
 		.elementor-element-0690b11 {
 			max-width: 900px !important;
-			/* Limita largura mÃ¡xima no desktop */
+			/* Limita largura máxima no desktop */
 			margin: 0 auto !important;
 		}
 
@@ -129,7 +102,7 @@
 			}
 		}
 
-		/* Estilos para vÃ­deos de Prova Social */
+		/* Estilos para vídeos de Prova Social */
 		.social-proof-video {
 			width: 100% !important;
 			height: auto !important;
@@ -137,7 +110,7 @@
 			background: #000 !important;
 		}
 
-		/* Esconde barra de progresso e mantÃ©m apenas play/pause (Webkit) */
+		/* Esconde barra de progresso e mantém apenas play/pause (Webkit) */
 		.social-proof-video::-webkit-media-controls-timeline,
 		.social-proof-video::-webkit-media-controls-current-time-display,
 		.social-proof-video::-webkit-media-controls-time-remaining-display,
@@ -149,28 +122,58 @@
 			display: none !important;
 		}
 
-		/* Fix para o Carrossel nÃ£o arrastar a pÃ¡gina */
+		/* Fix para o Carrossel não arrastar a página */
 		.elementor-element-0690b11 .swiper {
 			touch-action: pan-y !important;
 		}
 
-		 </style>
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
 
 
 
 	<link crossorigin="" data-rocket-preconnect="" href="https://cdn.utmify.com.br" rel="preconnect">
 	<link rel="preload" data-rocket-preload="" as="image"
-		href="images/Camada-9-11.jpg" fetchpriority="high">
+		href="https://guiadogui.com/wp-content/uploads/2026/01/Camada-9-11.jpg" fetchpriority="high">
 	<meta name="robots" content="max-image-preview:large">
 
-	<link rel="alternate" type="application/rss+xml" title="Feed para Low Ticket do Zero Â»"
-		href="https://rubensgodoy.com/feed/">
-	<link rel="alternate" type="application/rss+xml" title="Feed de comentÃ¡rios para Low Ticket do Zero Â»"
-		href="https://rubensgodoy.com/comments/feed/">
+	<link rel="alternate" type="application/rss+xml" title="Feed para Low Ticket do Zero »"
+		href="https://guiadogui.com/feed/">
+	<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Low Ticket do Zero »"
+		href="https://guiadogui.com/comments/feed/">
 	<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed"
-		href="https://rubensgodoy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frubensgodoy.com%2F">
+		href="https://guiadogui.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fguiadogui.com%2F">
 	<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed"
-		href="https://rubensgodoy.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Frubensgodoy.com%2F&format=xml">
+		href="https://guiadogui.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fguiadogui.com%2F&format=xml">
 	<style id="wp-img-auto-sizes-contain-inline-css">
 		img:is([sizes=auto i], [sizes^="auto," i]) {
 			contain-intrinsic-size: 3000px 1500px
@@ -178,7 +181,37 @@
 
 		/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
 
-		 </style>
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
 	<style id="wp-emoji-styles-inline-css">
 		img.wp-smiley,
 		img.emoji {
@@ -195,7 +228,37 @@
 
 		/*# sourceURL=wp-emoji-styles-inline-css */
 
-		 </style>
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
 	<style id="global-styles-inline-css">
 		:root {
 			--wp--preset--aspect-ratio--square: 1;
@@ -632,7 +695,37 @@
 
 		/*# sourceURL=global-styles-inline-css */
 
-		 </style>
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
 	<link data-minify="1" rel="stylesheet" id="hello-elementor-css" href="css/reset.css" media="all">
 	<link data-minify="1" rel="stylesheet" id="hello-elementor-theme-style-css" href="css/theme.css" media="all">
 	<link data-minify="1" rel="stylesheet" id="hello-elementor-header-footer-css" href="css/header-footer.css"
@@ -722,17 +815,47 @@
 
 		/*# sourceURL=rocket-lazyload-inline-css */
 
-		 </style>
-	<script type="text/javascript" src="js/jquery.min.js"
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
+	<script type="text/javascript" src="https://guiadogui.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
 		id="jquery-core-js" defer=""></script>
-	<script type="text/javascript" src="js/jquery-migrate.min.js"
+	<script type="text/javascript" src="https://guiadogui.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"
 		id="jquery-migrate-js" defer=""></script>
-	<link rel="https://api.w.org/" href="https://rubensgodoy.com/wp-json/">
-	<link rel="alternate" title="JSON" type="application/json" href="https://rubensgodoy.com/wp-json/wp/v2/pages/19">
-	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://rubensgodoy.com/xmlrpc.php?rsd">
+	<link rel="https://api.w.org/" href="https://guiadogui.com/wp-json/">
+	<link rel="alternate" title="JSON" type="application/json" href="https://guiadogui.com/wp-json/wp/v2/pages/19">
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://guiadogui.com/xmlrpc.php?rsd">
 	<meta name="generator" content="WordPress 6.9.4">
-	<link rel="canonical" href="https://rubensgodoy.com/">
-	<link rel="shortlink" href="https://rubensgodoy.com/">
+	<link rel="canonical" href="https://guiadogui.com/">
+	<link rel="shortlink" href="https://guiadogui.com/">
 	<meta name="generator"
 		content="Elementor 4.0.5; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-disabled, font_display-swap">
 	<style>
@@ -757,12 +880,42 @@
 			}
 		}
 
-		 </style>
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
 	<link rel="icon" href="images/cropped-Camada-9-11-32x32.jpg" sizes="32x32">
 	<link rel="icon" href="images/cropped-Camada-9-11-192x192.jpg" sizes="192x192">
 	<link rel="apple-touch-icon" href="images/cropped-Camada-9-11-180x180.jpg">
 	<meta name="msapplication-TileImage"
-		content="images/cropped-Camada-9-11-270x270.jpg">
+		content="https://guiadogui.com/wp-content/uploads/2026/01/cropped-Camada-9-11-270x270.jpg">
 	<noscript>
 		<style id="rocket-lazyload-nojs-css">
 			.rll-youtube-player,
@@ -770,7 +923,37 @@
 				display: none !important;
 			}
 
-		 </style>
+			/* Otimização de Performance e Fluidez */
+			.scroll-bottom,
+			.scroll-top,
+			.scroll-left,
+			.scroll-right,
+			.blur,
+			.elementor-invisible {
+				transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+				will-change: transform, opacity;
+			}
+
+			.ativo,
+			.animated {
+				opacity: 1 !important;
+				transform: translate(0, 0) scale(1) !important;
+				filter: blur(0) !important;
+				visibility: visible !important;
+			}
+
+			/* Ajuste para evitar 'travamento' no scroll */
+			html {
+				scroll-behavior: smooth;
+			}
+
+			@media (max-width: 767px) {
+				html {
+					scroll-behavior: auto;
+					/* Scroll nativo mais rápido no mobile */
+				}
+			}
+		</style>
 	</noscript>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<style>
@@ -779,7 +962,37 @@
 			pointer-events: auto !important;
 		}
 
-		 </style>
+		/* Otimização de Performance e Fluidez */
+		.scroll-bottom,
+		.scroll-top,
+		.scroll-left,
+		.scroll-right,
+		.blur,
+		.elementor-invisible {
+			transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out !important;
+			will-change: transform, opacity;
+		}
+
+		.ativo,
+		.animated {
+			opacity: 1 !important;
+			transform: translate(0, 0) scale(1) !important;
+			filter: blur(0) !important;
+			visibility: visible !important;
+		}
+
+		/* Ajuste para evitar 'travamento' no scroll */
+		html {
+			scroll-behavior: smooth;
+		}
+
+		@media (max-width: 767px) {
+			html {
+				scroll-behavior: auto;
+				/* Scroll nativo mais rápido no mobile */
+			}
+		}
+	</style>
 	<meta name="generator" content="WP Rocket 3.19.1.2"
 		data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_image_dimensions wpr_minify_css wpr_cdn wpr_preload_links wpr_desktop">
 </head>
@@ -797,15 +1010,16 @@
 				<div class="elementor-element elementor-element-2e691e7 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 					data-id="2e691e7" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Domine o TrÃ¡fego Pago e Escale seus
-						infoprodutos no Piloto AutomÃ¡tico.</p>
+					<p class="elementor-heading-title elementor-size-default">Domine o Tráfego Pago e Escale seus
+						infoprodutos no Piloto Automático.</p>
 				</div>
 				<div class="elementor-element elementor-element-d01537d elementor-widget__width-initial elementor-widget elementor-widget-heading"
 					data-id="d01537d" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Mesmo que nÃ£o tenha uma oferta ou esteja
+					<p class="elementor-heading-title elementor-size-default">Mesmo que não tenha uma oferta ou esteja
 						<br>
-						travado na escala do seu infoproduto.</p>
+						travado na escala do seu infoproduto.
+					</p>
 				</div>
 				<div class="elementor-element elementor-element-5541b63 e-con-full e-flex e-con e-child"
 					data-id="5541b63" data-element_type="container" data-e-type="container">
@@ -821,7 +1035,7 @@
 											d="M12.1087 4.2675L1.70858 15.0262L0 13.2588L10.3989 2.5H1.23371V0H14.5254V13.75H12.1087V4.2675Z"
 											fill="black" style="fill:black;fill-opacity:1;"></path>
 									</svg> </span>
-								<span class="elementor-button-text">QUERO ACESSAR O MÃ‰TODO AGORA</span>
+								<span class="elementor-button-text">QUERO ACESSAR O MÉTODO AGORA</span>
 							</span>
 						</a>
 					</div>
@@ -913,8 +1127,8 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">MÃ©todo
-										prÃ¡tico,</span> nÃ£o motivacional</span>
+								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">Método
+										prático,</span> não motivacional</span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
 								<span class="elementor-icon-list-icon">
@@ -934,7 +1148,7 @@
 										</defs>
 									</svg> </span>
 								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">Criado
-										para quem quer resultado real,</span> nÃ£o ilusÃ£o</span>
+										para quem quer resultado real,</span> não ilusão</span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
 								<span class="elementor-icon-list-icon">
@@ -953,7 +1167,7 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text">ComeÃ§ando com <span
+								<span class="elementor-icon-list-text">Começando com <span
 										style="font-weight:700;color: white">menos de R$150</span></span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
@@ -994,8 +1208,8 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">MÃ©todo
-										prÃ¡tico,</span> nÃ£o motivacional</span>
+								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">Método
+										prático,</span> não motivacional</span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
 								<span class="elementor-icon-list-icon">
@@ -1015,7 +1229,7 @@
 										</defs>
 									</svg> </span>
 								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">Criado
-										para quem quer resultado real,</span> nÃ£o ilusÃ£o</span>
+										para quem quer resultado real,</span> não ilusão</span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
 								<span class="elementor-icon-list-icon">
@@ -1034,7 +1248,7 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text">ComeÃ§ando com <span
+								<span class="elementor-icon-list-text">Começando com <span
 										style="font-weight:700;color: white">menos de R$150</span></span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
@@ -1075,8 +1289,8 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">MÃ©todo
-										prÃ¡tico,</span> nÃ£o motivacional</span>
+								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">Método
+										prático,</span> não motivacional</span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
 								<span class="elementor-icon-list-icon">
@@ -1096,7 +1310,7 @@
 										</defs>
 									</svg> </span>
 								<span class="elementor-icon-list-text"><span style="font-weight:700;color: white">Criado
-										para quem quer resultado real,</span> nÃ£o ilusÃ£o</span>
+										para quem quer resultado real,</span> não ilusão</span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
 								<span class="elementor-icon-list-icon">
@@ -1115,7 +1329,7 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text">ComeÃ§ando com <span
+								<span class="elementor-icon-list-text">Começando com <span
 										style="font-weight:700;color: white">menos de R$150</span></span>
 							</span>
 							<span class="elementor-icon-list-item elementor-inline-item">
@@ -1152,20 +1366,20 @@
 						data-id="2c38f71" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span>
-							IdentificaÃ§Ã£o</p>
+							Identificação</p>
 					</div>
 					<div class="elementor-element elementor-element-3af3b37 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="3af3b37" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
-						<p class="elementor-heading-title elementor-size-default">Se vocÃª <span style="font-weight:700"
+						<p class="elementor-heading-title elementor-size-default">Se você <span style="font-weight:700"
 								class="deg">sente que o marketing digital parece sempre prometer demais</span> e
-							entregar de menos, vocÃª nÃ£o estÃ¡ errado.</p>
+							entregar de menos, você não está errado.</p>
 					</div>
 					<div class="elementor-element elementor-element-28873b6 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="28873b6" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
-						<p class="elementor-heading-title elementor-size-default">NÃ£o Ã© falta de esforÃ§o. Ã‰ falta de um
-							mÃ©todo simples, direto e aplicÃ¡vel. <span style="font-weight:700;color: white">VocÃª nÃ£o
+						<p class="elementor-heading-title elementor-size-default">Não é falta de esforço. É falta de um
+							método simples, direto e aplicável. <span style="font-weight:700;color: white">Você não
 								precisa ser especialista. Precisa de um passo a passo
 								que funcione no mundo real.</span></p>
 					</div>
@@ -1297,7 +1511,7 @@
 										</defs>
 									</svg> </span>
 								<span class="elementor-icon-list-text">Aprende <span
-										style="font-weight:700;color: white">termos <br>difÃ­ceis</span></span>
+										style="font-weight:700;color: white">termos <br>difíceis</span></span>
 							</li>
 							<li class="elementor-icon-list-item">
 								<span class="elementor-icon-list-icon">
@@ -1387,8 +1601,8 @@
 											</linearGradient>
 										</defs>
 									</svg> </span>
-								<span class="elementor-icon-list-text">VÃª gurus mostrando <span
-										style="font-weight:700;color: white">resultados inalcanÃ§Ã¡veis</span></span>
+								<span class="elementor-icon-list-text">Vê gurus mostrando <span
+										style="font-weight:700;color: white">resultados inalcançáveis</span></span>
 							</li>
 							<li class="elementor-icon-list-item">
 								<span class="elementor-icon-list-icon">
@@ -1466,9 +1680,9 @@
 					<img decoding="async" width="1920" height="1220"
 						src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201920%201220'%3E%3C/svg%3E"
 						class="attachment-full size-full wp-image-84" alt=""
-						data-lazy-src="images/Group-1707478685.svg"><noscript><img
+						data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/Group-1707478685.svg"><noscript><img
 							loading="lazy" decoding="async" width="1920" height="1220"
-							src="images/Group-1707478685.svg"
+							src="https://guiadogui.com/wp-content/uploads/2026/01/Group-1707478685.svg"
 							class="attachment-full size-full wp-image-84" alt="" /></noscript>
 				</div>
 				<div class="elementor-element elementor-element-a1881c1 elementor-widget-mobile__width-inherit elementor-widget__width-inherit elementor-absolute elementor-widget elementor-widget-image"
@@ -1477,9 +1691,9 @@
 					<img decoding="async" width="1005" height="25"
 						src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201005%2025'%3E%3C/svg%3E"
 						class="attachment-full size-full wp-image-85" alt=""
-						data-lazy-src="images/Vector2.svg"><noscript><img
+						data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/Vector2.svg"><noscript><img
 							loading="lazy" decoding="async" width="1005" height="25"
-							src="images/Vector2.svg"
+							src="https://guiadogui.com/wp-content/uploads/2026/01/Vector2.svg"
 							class="attachment-full size-full wp-image-85" alt="" /></noscript>
 				</div>
 				<div class="elementor-element elementor-element-3910a89 e-con-full e-flex e-con e-child"
@@ -1493,23 +1707,23 @@
 					<div class="elementor-element elementor-element-17e9ac2 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="17e9ac2" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
-						<p class="elementor-heading-title elementor-size-default">Eu nÃ£o comecei com vantagem. <span
+						<p class="elementor-heading-title elementor-size-default">Eu não comecei com vantagem. <span
 								style="font-weight:700" class="deg">Comecei com necessidade.</span></p>
 					</div>
 					<div class="elementor-element elementor-element-4b40476 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="4b40476" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
-						<p class="elementor-heading-title elementor-size-default">Eu nÃ£o tinha experiÃªncia, audiÃªncia,
+						<p class="elementor-heading-title elementor-size-default">Eu não tinha experiência, audiência,
 							contatos nem dinheiro sobrando. Comecei ganhando pouco, tentando encontrar uma forma real de
-							mudar minha realidade.â€¨â€¨
+							mudar minha realidade.  
 							<br><br>
-							A virada nÃ£o aconteceu por talento ou sorte, mas quando eu entendi que o jogo <span
-								style="font-weight:700;color: white">nÃ£o era sobre aparecer, ser famoso ou criar algo
-								complexo.</span> Era sobre vender algo simples, todos os dias, com um processo claro.â€¨â€¨
+							A virada não aconteceu por talento ou sorte, mas quando eu entendi que o jogo <span
+								style="font-weight:700;color: white">não era sobre aparecer, ser famoso ou criar algo
+								complexo.</span> Era sobre vender algo simples, todos os dias, com um processo claro.  
 							<br><br>
-							Hoje, eu ensino <span style="font-weight:700;color: white">exatamente o que eu faÃ§o,</span>
-							sem esconder nada, sem teoria desnecessÃ¡ria e <span style="font-weight:700;color: white">sem
-								prometer o que nÃ£o depende de vocÃª.</span>
+							Hoje, eu ensino <span style="font-weight:700;color: white">exatamente o que eu faço,</span>
+							sem esconder nada, sem teoria desnecessária e <span style="font-weight:700;color: white">sem
+								prometer o que não depende de você.</span>
 						</p>
 					</div>
 					<div class="elementor-element elementor-element-6c2ebb9 e-con-full scroll-bottom e-flex e-con e-child"
@@ -1591,8 +1805,8 @@
 						data-id="8a49b5f" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">O erro de quem tenta <span
-								style="font-weight:700" class="deg">viver do digital nÃ£o Ã© falta de esforÃ§o. </span> Ã‰
-							comeÃ§ar pelo lugar errado.</p>
+								style="font-weight:700" class="deg">viver do digital não é falta de esforço. </span> É
+							começar pelo lugar errado.</p>
 					</div>
 					<div class="elementor-element elementor-element-2145268 e-grid e-con-full scroll-bottom e-con e-child"
 						data-id="2145268" data-element_type="container" data-e-type="container">
@@ -1702,7 +1916,7 @@
 										</p>
 
 										<p class="elementor-icon-box-description">
-											Produtos simples vendem mais rÃ¡pido, <b>validam com menos investimento</b> e
+											Produtos simples vendem mais rápido, <b>validam com menos investimento</b> e
 											escalam melhor. </p>
 
 									</div>
@@ -1797,7 +2011,7 @@
 										</p>
 
 										<p class="elementor-icon-box-description">
-											VocÃª nÃ£o cria do zero. VocÃª <b>replica estruturas que jÃ¡ funcionam.</b> </p>
+											Você não cria do zero. Você <b>replica estruturas que já funcionam.</b> </p>
 
 									</div>
 
@@ -1891,7 +2105,7 @@
 										</p>
 
 										<p class="elementor-icon-box-description">
-											NÃ£o Ã© sobre criatividade. Ã‰ sobre <b>testar o que converte.</b> </p>
+											Não é sobre criatividade. É sobre <b>testar o que converte.</b> </p>
 
 									</div>
 
@@ -2053,11 +2267,11 @@
 
 										<p class="elementor-icon-box-title">
 											<span>
-												Processo DiÃ¡rio </span>
+												Processo Diário </span>
 										</p>
 
 										<p class="elementor-icon-box-description">
-											Um sistema <b>simples, repetÃ­vel e previsÃ­vel.</b> </p>
+											Um sistema <b>simples, repetível e previsível.</b> </p>
 
 									</div>
 
@@ -2181,7 +2395,7 @@
 										</p>
 
 										<p class="elementor-icon-box-description">
-											VocÃª aprende a validar antes de escalar, <b>reduzindo perdas.</b> </p>
+											Você aprende a validar antes de escalar, <b>reduzindo perdas.</b> </p>
 
 									</div>
 
@@ -2271,11 +2485,11 @@
 
 										<p class="elementor-icon-box-title">
 											<span>
-												ExecuÃ§Ã£o Guiada </span>
+												Execução Guiada </span>
 										</p>
 
 										<p class="elementor-icon-box-description">
-											VocÃª sabe exatamente <b>o que fazer, quando fazer e como corrigir.</b> </p>
+											Você sabe exatamente <b>o que fazer, quando fazer e como corrigir.</b> </p>
 
 									</div>
 
@@ -2295,7 +2509,7 @@
 											d="M12.1087 4.2675L1.70858 15.0262L0 13.2588L10.3989 2.5H1.23371V0H14.5254V13.75H12.1087V4.2675Z"
 											fill="black" style="fill:black;fill-opacity:1;"></path>
 									</svg> </span>
-								<span class="elementor-button-text">QUERO TER ACESSO A ESSE MÃ‰TODO</span>
+								<span class="elementor-button-text">QUERO TER ACESSO A ESSE MÉTODO</span>
 							</span>
 						</a>
 					</div>
@@ -2308,9 +2522,9 @@
 						<img decoding="async" width="1438" height="1442"
 							src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201438%201442'%3E%3C/svg%3E"
 							class="attachment-full size-full wp-image-147" alt=""
-							data-lazy-src="images/Circulos.svg"><noscript><img
+							data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/Circulos.svg"><noscript><img
 								loading="lazy" decoding="async" width="1438" height="1442"
-								src="images/Circulos.svg"
+								src="https://guiadogui.com/wp-content/uploads/2026/01/Circulos.svg"
 								class="attachment-full size-full wp-image-147" alt="" /></noscript>
 					</div>
 					<div class="elementor-element elementor-element-94d3877 e-con-full e-flex e-con e-child"
@@ -2321,7 +2535,7 @@
 								data-id="ed432b0" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span>
-									Ãrea de membros</p>
+									Área de membros</p>
 							</div>
 							<div class="elementor-element elementor-element-814e48c e-con-full scroll-bottom e-flex e-con e-child"
 								data-id="814e48c" data-element_type="container" data-e-type="container">
@@ -2329,16 +2543,16 @@
 									data-id="f683165" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
 									<p class="elementor-heading-title elementor-size-default"><span
-											style="font-weight:700" class="deg">O Low Ticket do Zero Ã© um treinamento
-											prÃ¡tico</span> para quem quer comeÃ§ar no marketing digital da forma mais
-										simples possÃ­vel.</p>
+											style="font-weight:700" class="deg">O Low Ticket do Zero é um treinamento
+											prático</span> para quem quer começar no marketing digital da forma mais
+										simples possível.</p>
 								</div>
 								<div class="elementor-element elementor-element-248aa96 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="248aa96" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
 									<p class="elementor-heading-title elementor-size-default"><span
 											style="font-weight:700;color: white">Sem promessas irreais.</span> Sem
-										atalhos mÃ¡gicos. Com execuÃ§Ã£o real.</p>
+										atalhos mágicos. Com execução real.</p>
 								</div>
 							</div>
 						</div>
@@ -2359,13 +2573,13 @@
 							<img decoding="async" width="1346" height="711"
 								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201346%20711'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-140" alt=""
-								data-lazy-srcset="images/Profile-1.png.webp 1346w,  images/Profile-1-300x158.png.webp 300w,  images/Profile-1-1024x541.png.webp 1024w,  images/Profile-1-768x406.png.webp 768w"
+								data-lazy-srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp 1346w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-300x158.png.webp 300w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-1024x541.png.webp 1024w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-768x406.png.webp 768w"
 								data-lazy-sizes="(max-width: 1346px) 100vw, 1346px"
-								data-lazy-src="images/Profile-1.png.webp"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp"><noscript><img
 									loading="lazy" decoding="async" width="1346" height="711"
-									src="images/Profile-1.png.webp"
+									src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp"
 									class="attachment-full size-full wp-image-140" alt=""
-									srcset="images/Profile-1.png.webp 1346w,  images/Profile-1-300x158.png.webp 300w,  images/Profile-1-1024x541.png.webp 1024w,  images/Profile-1-768x406.png.webp 768w"
+									srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp 1346w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-300x158.png.webp 300w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-1024x541.png.webp 1024w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-768x406.png.webp 768w"
 									sizes="(max-width: 1346px) 100vw, 1346px" /></noscript>
 						</div>
 						<div class="elementor-element elementor-element-e6b7eb5 elementor-icon-list--layout-inline elementor-widget__width-inherit carrossel blur elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
@@ -2715,13 +2929,13 @@
 					data-id="d8b345e" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><b>Resultados de quem saiu do zero</b> e
-						aplicou o mÃ©todo</p>
+						aplicou o método</p>
 				</div>
 				<div class="elementor-element elementor-element-742cec2 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="742cec2" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default"><b>Sem promessas milagrosas.</b> SÃ³
-						pessoas comuns executando um processo simples e vendo as vendas acontecerem na prÃ¡tica.</p>
+					<p class="elementor-heading-title elementor-size-default"><b>Sem promessas milagrosas.</b> Só
+						pessoas comuns executando um processo simples e vendo as vendas acontecerem na prática.</p>
 				</div>
 
 				<div class="elementor-element elementor-element-0690b11 blur elementor-widget elementor-widget-image-carousel"
@@ -2800,7 +3014,7 @@
 										d="M12.1087 4.2675L1.70858 15.0262L0 13.2588L10.3989 2.5H1.23371V0H14.5254V13.75H12.1087V4.2675Z"
 										fill="black" style="fill:black;fill-opacity:1;"></path>
 								</svg> </span>
-							<span class="elementor-button-text">quero comprovar o mÃ©todo</span>
+							<span class="elementor-button-text">quero comprovar o método</span>
 						</span>
 					</a>
 				</div>
@@ -2812,7 +3026,7 @@
 				<div class="elementor-element elementor-element-03f7940 scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="03f7940" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> ConteÃºdos</p>
+					<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Conteúdos</p>
 				</div>
 				<div class="elementor-element elementor-element-9987be9 elementor-widget elementor-widget-menu-anchor"
 					data-id="9987be9" data-element_type="widget" data-e-type="widget"
@@ -2822,7 +3036,7 @@
 				<div class="elementor-element elementor-element-f265678 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="f265678" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Tudo o que vocÃª recebe ao entrar hoje no
+					<p class="elementor-heading-title elementor-size-default">Tudo o que você recebe ao entrar hoje no
 						<span style="font-weight:700" class="deg">Low Ticket do Zero</span>
 					</p>
 				</div>
@@ -2836,15 +3050,15 @@
 							<img decoding="async" width="113" height="21"
 								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20113%2021'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-41" alt=""
-								data-lazy-src="images/chanfro-topo-2.svg"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo-2.svg"><noscript><img
 									loading="lazy" decoding="async" width="113" height="21"
-									src="images/chanfro-topo-2.svg"
+									src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo-2.svg"
 									class="attachment-full size-full wp-image-41" alt="" /></noscript>
 						</div>
 						<div class="elementor-element elementor-element-f12c965 scroll-bottom elementor-widget elementor-widget-heading"
 							data-id="f12c965" data-element_type="widget" data-e-type="widget"
 							data-widget_type="heading.default">
-							<p class="elementor-heading-title elementor-size-default">CONTEÃšDOS</p>
+							<p class="elementor-heading-title elementor-size-default">CONTEÚDOS</p>
 						</div>
 						<div class="elementor-element elementor-element-b077213 e-con-full e-flex e-con e-child"
 							data-id="b077213" data-element_type="container" data-e-type="container">
@@ -2852,8 +3066,8 @@
 								data-id="0dee594" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default"><span
-										style="font-weight:700">Um mÃ©todo completo,</span> com suporte e estrutura, por
-									um valor acessÃ­vel.</p>
+										style="font-weight:700">Um método completo,</span> com suporte e estrutura, por
+									um valor acessível.</p>
 							</div>
 							<div class="elementor-element elementor-element-922b7d3 scroll-bottom elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
 								data-id="922b7d3" data-element_type="widget" data-e-type="widget"
@@ -2866,7 +3080,7 @@
 							<div class="elementor-element elementor-element-3dd2f7b elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="3dd2f7b" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
-								<p class="elementor-heading-title elementor-size-default">vocÃª irÃ¡ receber:</p>
+								<p class="elementor-heading-title elementor-size-default">você irá receber:</p>
 							</div>
 							<div class="elementor-element elementor-element-b7d68c0 elementor-widget__width-initial lista elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
 								data-id="b7d68c0" data-element_type="widget" data-e-type="widget"
@@ -2919,7 +3133,7 @@
 													</linearGradient>
 												</defs>
 											</svg> </span>
-										<span class="elementor-icon-list-text">Todos os mÃ³dulos passo a passo</span>
+										<span class="elementor-icon-list-text">Todos os módulos passo a passo</span>
 									</li>
 									<li class="elementor-icon-list-item">
 										<span class="elementor-icon-list-icon">
@@ -2947,7 +3161,7 @@
 												</defs>
 											</svg> </span>
 										<span class="elementor-icon-list-text">Pack completo de criativos
-											editÃ¡veis</span>
+											editáveis</span>
 									</li>
 									<li class="elementor-icon-list-item">
 										<span class="elementor-icon-list-icon">
@@ -3141,7 +3355,7 @@
 							<div class="elementor-element elementor-element-19cfb01 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="19cfb01" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
-								<p class="elementor-heading-title elementor-size-default">OU R$297,00 Ã€ VISTA</p>
+								<p class="elementor-heading-title elementor-size-default">OU R$297,00 À VISTA</p>
 							</div>
 						</div>
 						<div class="elementor-element elementor-element-6e29ebc e-con-full e-flex e-con e-child"
@@ -3173,9 +3387,9 @@
 							<img decoding="async" width="113" height="21"
 								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20113%2021'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-40" alt=""
-								data-lazy-src="images/chanfro-topo.svg"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo.svg"><noscript><img
 									loading="lazy" decoding="async" width="113" height="21"
-									src="images/chanfro-topo.svg"
+									src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo.svg"
 									class="attachment-full size-full wp-image-40" alt="" /></noscript>
 						</div>
 						<div class="elementor-element elementor-element-9ee1606 elementor-widget-mobile__width-initial blur elementor-widget elementor-widget-image"
@@ -3184,26 +3398,26 @@
 							<img decoding="async" width="324" height="368"
 								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20324%20368'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-42" alt=""
-								data-lazy-src="images/7.png"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/7.svg"><noscript><img
 									loading="lazy" decoding="async" width="324" height="368"
-									src="images/7.png"
+									src="https://guiadogui.com/wp-content/uploads/2026/01/7.svg"
 									class="attachment-full size-full wp-image-42" alt="" /></noscript>
 						</div>
 						<div class="elementor-element elementor-element-2914d70 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 							data-id="2914d70" data-element_type="widget" data-e-type="widget"
 							data-widget_type="heading.default">
 							<p class="elementor-heading-title elementor-size-default"><span
-									style="font-weight:700;color:white">VocÃª tem <span style="font-weight:700"
+									style="font-weight:700;color:white">Você tem <span style="font-weight:700"
 										class="deg">7 dias</span> para decidir</span> se isso realmente faz sentido pra
-								vocÃª.</p>
+								você.</p>
 						</div>
 						<div class="elementor-element elementor-element-d97d4cc elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 							data-id="d97d4cc" data-element_type="widget" data-e-type="widget"
 							data-widget_type="heading.default">
 							<p class="elementor-heading-title elementor-size-default">Acesse o treinamento, veja as
-								aulas, entenda o mÃ©todo e avalie com calma. Se dentro de 7 dias vocÃª perceber que nÃ£o Ã©
-								pra vocÃª, <span style="font-weight:700;color: white">basta solicitar o reembolso e todo
-									o valor serÃ¡ devolvido. Sem perguntas, sem burocracia e sem risco.</span></p>
+								aulas, entenda o método e avalie com calma. Se dentro de 7 dias você perceber que não é
+								pra você, <span style="font-weight:700;color: white">basta solicitar o reembolso e todo
+									o valor será devolvido. Sem perguntas, sem burocracia e sem risco.</span></p>
 						</div>
 					</div>
 				</div>
@@ -3234,8 +3448,8 @@
 							<summary class="e-n-accordion-item-title" data-accordion-index="1" tabindex="0"
 								aria-expanded="false" aria-controls="e-n-accordion-item-4870">
 								<span class="e-n-accordion-item-title-header">
-									<div class="e-n-accordion-item-title-text"> Preciso ter experiÃªncia para aplicar o
-										mÃ©todo? </div>
+									<div class="e-n-accordion-item-title-text"> Preciso ter experiência para aplicar o
+										método? </div>
 								</span>
 								<span class="e-n-accordion-item-title-icon">
 									<span class="e-opened"><svg xmlns="http://www.w3.org/2000/svg" width="36"
@@ -3276,9 +3490,9 @@
 								<div class="elementor-element elementor-element-b6c5c74 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="b6c5c74" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
-									<p class="elementor-heading-title elementor-size-default">NÃ£o. O treinamento foi
-										criado exatamente para quem estÃ¡ comeÃ§ando do zero. VocÃª aprende desde os
-										fundamentos atÃ© a aplicaÃ§Ã£o prÃ¡tica, com explicaÃ§Ãµes simples e diretas.</p>
+									<p class="elementor-heading-title elementor-size-default">Não. O treinamento foi
+										criado exatamente para quem está começando do zero. Você aprende desde os
+										fundamentos até a aplicação prática, com explicações simples e diretas.</p>
 								</div>
 							</div>
 						</details>
@@ -3286,7 +3500,7 @@
 							<summary class="e-n-accordion-item-title" data-accordion-index="2" tabindex="-1"
 								aria-expanded="false" aria-controls="e-n-accordion-item-4871">
 								<span class="e-n-accordion-item-title-header">
-									<div class="e-n-accordion-item-title-text"> Preciso aparecer ou criar conteÃºdo nas
+									<div class="e-n-accordion-item-title-text"> Preciso aparecer ou criar conteúdo nas
 										redes sociais? </div>
 								</span>
 								<span class="e-n-accordion-item-title-icon">
@@ -3328,8 +3542,8 @@
 								<div class="elementor-element elementor-element-2ebc452 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="2ebc452" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
-									<p class="elementor-heading-title elementor-size-default">NÃ£o. O mÃ©todo nÃ£o depende
-										de audiÃªncia, seguidores ou exposiÃ§Ã£o pessoal.
+									<p class="elementor-heading-title elementor-size-default">Não. O método não depende
+										de audiência, seguidores ou exposição pessoal.
 									</p>
 								</div>
 							</div>
@@ -3339,7 +3553,7 @@
 								aria-expanded="false" aria-controls="e-n-accordion-item-4872">
 								<span class="e-n-accordion-item-title-header">
 									<div class="e-n-accordion-item-title-text"> Preciso investir muito dinheiro para
-										comeÃ§ar? </div>
+										começar? </div>
 								</span>
 								<span class="e-n-accordion-item-title-icon">
 									<span class="e-opened"><svg xmlns="http://www.w3.org/2000/svg" width="36"
@@ -3380,8 +3594,8 @@
 								<div class="elementor-element elementor-element-18dc971 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="18dc971" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
-									<p class="elementor-heading-title elementor-size-default">NÃ£o. VocÃª aprende a
-										comeÃ§ar com baixo investimento, inclusive abaixo de R$150, focando em validaÃ§Ã£o
+									<p class="elementor-heading-title elementor-size-default">Não. Você aprende a
+										começar com baixo investimento, inclusive abaixo de R$150, focando em validação
 										antes de escalar.</p>
 								</div>
 							</div>
@@ -3390,7 +3604,7 @@
 							<summary class="e-n-accordion-item-title" data-accordion-index="4" tabindex="-1"
 								aria-expanded="false" aria-controls="e-n-accordion-item-4873">
 								<span class="e-n-accordion-item-title-header">
-									<div class="e-n-accordion-item-title-text"> O suporte estÃ¡ incluso? </div>
+									<div class="e-n-accordion-item-title-text"> O suporte está incluso? </div>
 								</span>
 								<span class="e-n-accordion-item-title-icon">
 									<span class="e-opened"><svg xmlns="http://www.w3.org/2000/svg" width="36"
@@ -3431,8 +3645,8 @@
 								<div class="elementor-element elementor-element-dc65daf elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="dc65daf" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
-									<p class="elementor-heading-title elementor-size-default">Sim. VocÃª terÃ¡ acesso ao
-										suporte no WhatsApp, ao grupo de networking e Ã s calls ao vivo semanais.</p>
+									<p class="elementor-heading-title elementor-size-default">Sim. Você terá acesso ao
+										suporte no WhatsApp, ao grupo de networking e às calls ao vivo semanais.</p>
 								</div>
 							</div>
 						</details>
@@ -3482,8 +3696,8 @@
 								<div class="elementor-element elementor-element-c8dcd25 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="c8dcd25" data-element_type="widget" data-e-type="widget"
 									data-widget_type="heading.default">
-									<p class="elementor-heading-title elementor-size-default">O acesso Ã© liberado por 1
-										ano, permitindo que vocÃª assista no seu ritmo e revise sempre que necessÃ¡rio.
+									<p class="elementor-heading-title elementor-size-default">O acesso é liberado por 1
+										ano, permitindo que você assista no seu ritmo e revise sempre que necessário.
 									</p>
 								</div>
 							</div>
@@ -3494,7 +3708,7 @@
 				</div>
 				<div class="elementor-element elementor-element-c802b37 elementor-widget elementor-widget-html"
 					data-id="c802b37" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
-					<script type="text/javascript">
+					<script type="rocketlazyloadscript">
   window.pixelId = "690938bc00574e54d6ae67b4";
   var a = document.createElement("script");
   a.setAttribute("async", "");
@@ -3505,7 +3719,9 @@
 				</div>
 				<div class="elementor-element elementor-element-475e99d elementor-widget elementor-widget-html"
 					data-id="475e99d" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
-					
+					<script type="rocketlazyloadscript" data-minify="1"
+						data-rocket-src="https://guiadogui.com/wp-content/cache/min/1/scripts/utms/latest.js?ver=1769713577"
+						data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
 				</div>
 			</div>
 		</div>
@@ -3515,7 +3731,40 @@
 				<div class="elementor-element elementor-element-e0605ac elementor-absolute elementor-widget elementor-widget-html"
 					data-id="e0605ac" data-element_type="widget" data-e-type="widget" data-settings="{"
 					_position":"absolute"}"="" data-widget_type="html.default">
-					<!-- Scripts de animaÃ§Ã£o GSAP removidos para corrigir travamentos e lentidÃ£o -->
+					<script data-minify="1" src="js/gsap.min.js" onload="nowprocket()"></script>
+					<script data-minify="1" src="js/ScrollTrigger.min.js" onload="nowprocket()"></script>
+
+					<script>
+						(function () {
+							const observerOptions = {
+								root: null,
+								rootMargin: '0px 0px -10% 0px',
+								threshold: 0.05
+							};
+
+							const observer = new IntersectionObserver((entries) => {
+								entries.forEach(entry => {
+									if (entry.isIntersecting) {
+										entry.target.classList.add("ativo");
+										observer.unobserve(entry.target);
+									}
+								});
+							}, observerOptions);
+
+							function initScrollAnimations() {
+								const selectors = ".scroll-left, .scroll-right, .scroll-top, .scroll-bottom, .blur, .lista .elementor-icon-list-item, .faq .e-n-accordion-item";
+								document.querySelectorAll(selectors).forEach(el => {
+									observer.observe(el);
+								});
+							}
+
+							if (document.readyState === 'loading') {
+								document.addEventListener('DOMContentLoaded', initScrollAnimations);
+							} else {
+								initScrollAnimations();
+							}
+						})();
+					</script>
 				</div>
 				<div class="elementor-element elementor-element-b151c70 elementor-absolute elementor-widget elementor-widget-html"
 					data-id="b151c70" data-element_type="widget" data-e-type="widget" data-settings="{"
@@ -3525,7 +3774,7 @@
 				<div class="elementor-element elementor-element-fbaf079 elementor-widget elementor-widget-heading"
 					data-id="fbaf079" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Â© Copyright 2026. Todos os direitos
+					<p class="elementor-heading-title elementor-size-default">© Copyright 2026. Todos os direitos
 						reservados.</p>
 				</div>
 				<div class="elementor-element elementor-element-65c161a elementor-widget elementor-widget-html"
@@ -3589,7 +3838,7 @@
 	<script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/hello-elementor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
-	<script type="text/javascript">
+	<script type="rocketlazyloadscript">
 				const lazyloadRunObserver = () => {
 					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
 					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
@@ -3615,65 +3864,67 @@
 					document.addEventListener( event, lazyloadRunObserver );
 				} );
 			</script>
-	<script type="text/javascript" id="rocket-browser-checker-js-after">
+	<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
 "use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
 //# sourceURL=rocket-browser-checker-js-after
 </script>
 	<script id="rocket-preload-links-js-extra">
-		var RocketPreloadLinksConfig = { "excludeUris": "/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/", "usesTrailingSlash": "1", "imageExt": "jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php", "fileExt": "jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm", "siteUrl": "https://rubensgodoy.com", "onHoverDelay": "100", "rateThrottle": "3" };
+		var RocketPreloadLinksConfig = { "excludeUris": "/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/", "usesTrailingSlash": "1", "imageExt": "jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php", "fileExt": "jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm", "siteUrl": "https://guiadogui.com", "onHoverDelay": "100", "rateThrottle": "3" };
 		//# sourceURL=rocket-preload-links-js-extra
 	</script>
-	<script type="text/javascript" id="rocket-preload-links-js-after">
+	<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
 (function() {
 "use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
 }());
 
 //# sourceURL=rocket-preload-links-js-after
 </script>
-	<script type="text/javascript" data-minify="1"
-		src="js/hello-frontend.js"
-		id="hello-theme-frontend-js"  defer=""></script>
-	<!-- Lenis Removido para prevenir travamento no scroll -->
-	
-	<script type="text/javascript"
-		src="js/webpack.runtime.min.js"
-		id="elementor-webpack-runtime-js"  defer=""></script>
-	<script type="text/javascript"
-		src="js/frontend-modules.min.js"
-		id="elementor-frontend-modules-js"  defer=""></script>
-	<script type="text/javascript"
-		src="js/core.min.js" id="jquery-ui-core-js"
-		 defer=""></script>
-	<script type="text/javascript" id="elementor-frontend-js-before">
-var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"4.0.5","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_optimized_markup":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"e_pro_free_trial_popup":true,"nested-elements":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"e_opt_in_v4_page":true,"e_components":true,"e_interactions":true,"e_widget_creation":true,"import-export-customization":true,"mega-menu":true,"e_pro_variables":true},"urls":{"assets":"https:\/\/rubensgodoy.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/rubensgodoy.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"8cb0513691","atomicFormsSendForm":"88013412fa"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":19,"title":"Low%20Ticket%20do%20Zero","excerpt":"","featuredImage":"https:\/\/rubensgodoy.com\/wp-content\/uploads\/2026\/01\/cropped-Camada-9-11.jpg"}};
+	<script type="rocketlazyloadscript" data-minify="1"
+		data-rocket-src="https://guiadogui.com/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/js/hello-frontend.js?ver=1769713205"
+		id="hello-theme-frontend-js" data-rocket-defer="" defer=""></script>
+	<script src="https://guiadogui.com/wp-content/plugins/mousewheel-smooth-scroll/js/lenis.min.js?ver=1.1.19"
+		id="lenis-js" defer=""></script>
+	<script src="https://guiadogui.com/wp-content/uploads/wpmss/lenis-init.min.js?ver=1769663525" id="lenis-init-js"
+		defer=""></script>
+	<script type="rocketlazyloadscript"
+		data-rocket-src="https://guiadogui.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.0.5"
+		id="elementor-webpack-runtime-js" data-rocket-defer="" defer=""></script>
+	<script type="rocketlazyloadscript"
+		data-rocket-src="https://guiadogui.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.0.5"
+		id="elementor-frontend-modules-js" data-rocket-defer="" defer=""></script>
+	<script type="rocketlazyloadscript"
+		data-rocket-src="https://guiadogui.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"
+		data-rocket-defer="" defer=""></script>
+	<script type="rocketlazyloadscript" id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"4.0.5","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_optimized_markup":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"e_pro_free_trial_popup":true,"nested-elements":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"e_opt_in_v4_page":true,"e_components":true,"e_interactions":true,"e_widget_creation":true,"import-export-customization":true,"mega-menu":true,"e_pro_variables":true},"urls":{"assets":"https:\/\/guiadogui.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/guiadogui.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/guiadogui.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"8cb0513691","atomicFormsSendForm":"88013412fa"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"title","hello_footer_logo_type":"logo"},"post":{"id":19,"title":"Low%20Ticket%20do%20Zero","excerpt":"","featuredImage":"https:\/\/guiadogui.com\/wp-content\/uploads\/2026\/01\/cropped-Camada-9-11.jpg"}};
 //# sourceURL=elementor-frontend-js-before
 </script>
 	<script type="text/javascript"
-		src="js/frontend.min.js"
+		src="https://guiadogui.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=4.0.5"
 		id="elementor-frontend-js" defer=""></script>
 	<script type="text/javascript"
-		src="js/swiper.min.js"
+		src="https://guiadogui.com/wp-content/plugins/elementor/assets/lib/swiper/v8/swiper.min.js?ver=8.4.5"
 		id="swiper-js" defer=""></script>
 	<script type="text/javascript"
-		src="js/webpack-pro.runtime.min.js"
+		src="https://guiadogui.com/wp-content/plugins/elementor-pro/assets/js/webpack-pro.runtime.min.js?ver=3.34.3"
 		id="elementor-pro-webpack-runtime-js" defer=""></script>
-	<script type="text/javascript" src="js/hooks.min.js"
+	<script type="text/javascript" src="https://guiadogui.com/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1"
 		id="wp-hooks-js"></script>
-	<script type="text/javascript" src="js/i18n.min.js"
+	<script type="text/javascript" src="https://guiadogui.com/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375"
 		id="wp-i18n-js"></script>
-	<script type="text/javascript" id="wp-i18n-js-after">
+	<script type="rocketlazyloadscript" id="wp-i18n-js-after">
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 //# sourceURL=wp-i18n-js-after
 </script>
-	<script type="text/javascript" id="elementor-pro-frontend-js-before">
-var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin\/admin-ajax.php","nonce":"0ea9d2bbd6","urls":{"assets":"https:\/\/rubensgodoy.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/rubensgodoy.com\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":false},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/rubensgodoy.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
+	<script type="rocketlazyloadscript" id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/guiadogui.com\/wp-admin\/admin-ajax.php","nonce":"0ea9d2bbd6","urls":{"assets":"https:\/\/guiadogui.com\/wp-content\/plugins\/elementor-pro\/assets\/","rest":"https:\/\/guiadogui.com\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":false},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/guiadogui.com\/wp-content\/plugins\/elementor-pro\/modules\/lottie\/assets\/animations\/default.json"}};
 //# sourceURL=elementor-pro-frontend-js-before
 </script>
 	<script type="text/javascript"
-		src="js/frontend.min.js"
+		src="https://guiadogui.com/wp-content/plugins/elementor-pro/assets/js/frontend.min.js?ver=3.34.3"
 		id="elementor-pro-frontend-js" defer=""></script>
 	<script type="text/javascript"
-		src="js/elements-handlers.min.js"
+		src="https://guiadogui.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=3.34.3"
 		id="pro-elements-handlers-js" defer=""></script>
 	<script>window.lazyLoadOptions = [{ elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]", data_src: "lazy-src", data_srcset: "lazy-srcset", data_sizes: "lazy-sizes", class_loading: "lazyloading", class_loaded: "lazyloaded", threshold: 300, callback_loaded: function (element) { if (element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible") { if (element.classList.contains("lazyloaded")) { if (typeof window.jQuery != "undefined") { if (jQuery.fn.fitVids) { jQuery(element).parent().fitVids() } } } } } }, { elements_selector: ".rocket-lazyload", data_src: "lazy-src", data_srcset: "lazy-srcset", data_sizes: "lazy-sizes", class_loading: "lazyloading", class_loaded: "lazyloaded", threshold: 300, }]; window.addEventListener('LazyLoad::Initialized', function (e) {
 			var lazyLoadInstance = e.detail.instance; if (window.MutationObserver) {
@@ -3690,8 +3941,8 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 			}
 		}, !1)</script>
 	<script data-no-minify="1" async="" src="js/lazyload.min.js"></script>
-	<script>function lazyLoadThumb(e, alt, l) { var t = '<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>', a = '<button class="play" aria-label="Executar vÃ­deo do YouTube"></button>'; if (l) { t = t.replace('data-lazy-', ''); t = t.replace('loading="lazy"', ''); t = t.replace(/<noscript>.*?<\/noscript>/g, ''); } t = t.replace('alt=""', 'alt="' + alt + '"'); return t.replace("ID", e) + a } function lazyLoadYoutubeIframe() { var e = document.createElement("iframe"), t = "ID?autoplay=1"; t += 0 === this.parentNode.dataset.query.length ? "" : "&" + this.parentNode.dataset.query; e.setAttribute("src", t.replace("ID", this.parentNode.dataset.src)), e.setAttribute("frameborder", "0"), e.setAttribute("allowfullscreen", "1"), e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"), this.parentNode.parentNode.replaceChild(e, this.parentNode) } document.addEventListener("DOMContentLoaded", function () { var exclusions = []; var e, t, p, u, l, a = document.getElementsByClassName("rll-youtube-player"); for (t = 0; t < a.length; t++)(e = document.createElement("div")), (u = 'https://i.ytimg.com/vi/ID/hqdefault.jpg'), (u = u.replace('ID', a[t].dataset.id)), (l = exclusions.some(exclusion => u.includes(exclusion))), e.setAttribute("data-id", a[t].dataset.id), e.setAttribute("data-query", a[t].dataset.query), e.setAttribute("data-src", a[t].dataset.src), (e.innerHTML = lazyLoadThumb(a[t].dataset.id, a[t].dataset.alt, l)), a[t].appendChild(e), (p = e.querySelector(".play")), (p.onclick = lazyLoadYoutubeIframe) });</script>
-		<script>(() => {
+	<script>function lazyLoadThumb(e, alt, l) { var t = '<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>', a = '<button class="play" aria-label="Executar vídeo do YouTube"></button>'; if (l) { t = t.replace('data-lazy-', ''); t = t.replace('loading="lazy"', ''); t = t.replace(/<noscript>.*?<\/noscript>/g, ''); } t = t.replace('alt=""', 'alt="' + alt + '"'); return t.replace("ID", e) + a } function lazyLoadYoutubeIframe() { var e = document.createElement("iframe"), t = "ID?autoplay=1"; t += 0 === this.parentNode.dataset.query.length ? "" : "&" + this.parentNode.dataset.query; e.setAttribute("src", t.replace("ID", this.parentNode.dataset.src)), e.setAttribute("frameborder", "0"), e.setAttribute("allowfullscreen", "1"), e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"), this.parentNode.parentNode.replaceChild(e, this.parentNode) } document.addEventListener("DOMContentLoaded", function () { var exclusions = []; var e, t, p, u, l, a = document.getElementsByClassName("rll-youtube-player"); for (t = 0; t < a.length; t++)(e = document.createElement("div")), (u = 'https://i.ytimg.com/vi/ID/hqdefault.jpg'), (u = u.replace('ID', a[t].dataset.id)), (l = exclusions.some(exclusion => u.includes(exclusion))), e.setAttribute("data-id", a[t].dataset.id), e.setAttribute("data-query", a[t].dataset.query), e.setAttribute("data-src", a[t].dataset.src), (e.innerHTML = lazyLoadThumb(a[t].dataset.id, a[t].dataset.alt, l)), a[t].appendChild(e), (p = e.querySelector(".play")), (p.onclick = lazyLoadYoutubeIframe) });</script>
+	<script>(() => {
 			class RocketElementorPreload {
 				constructor() {
 					this.deviceMode = document.createElement("span"), this.deviceMode.id = "elementor-device-mode-wpr", this.deviceMode.setAttribute("class", "elementor-screen-only"), document.body.appendChild(this.deviceMode)
@@ -3707,7 +3958,7 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 								observer.unobserve(entry.target);
 							}
 						});
-					}, { rootMargin: '0px 0px 200px 0px', threshold: 0.01 });
+					}, { rootMargin: '0px 0px -50px 0px', threshold: 0.1 });
 
 					document.querySelectorAll(".elementor-invisible[data-settings]").forEach((t => {
 						observer.observe(t);
@@ -3748,10 +3999,15 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 
 	<script>
 		(function () {
-			// ForÃ§a eventos passivos para scroll mais suave em todos os dispositivos
+			const isMobile = 'ontouchstart' in window ||
+				window.matchMedia("(max-width: 1024px)").matches;
+
+			if (!isMobile) return; // Desktop: não faz nada
+
+			// 1. Força touch events passivos (corrige o WP Rocket passive:false)
 			const originalAddEventListener = EventTarget.prototype.addEventListener;
 			EventTarget.prototype.addEventListener = function (type, fn, options) {
-				if (type === 'touchmove' || type === 'touchstart' || type === 'wheel' || type === 'mousewheel') {
+				if (type === 'touchmove' || type === 'touchstart') {
 					if (typeof options === 'object') {
 						options.passive = true;
 					} else {
@@ -3761,32 +4017,50 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 				return originalAddEventListener.call(this, type, fn, options);
 			};
 
-			// DestrÃ³i ativamente qualquer instÃ¢ncia de smooth scroll que cause lag
+			// 2. Destrói o Lenis assim que ele aparecer (cobre o lenis-init.min.js)
 			function destroyLenis() {
 				const instance = window.lenis || window.lenisInstance ||
 					window.__lenis || window.smoothScroll;
 				if (instance && typeof instance.destroy === 'function') {
 					instance.destroy();
+					window.lenis = null;
+					window.lenisInstance = null;
+					// Restaura scroll nativo
+					document.documentElement.style.overflow = '';
+					document.body.style.overflow = '';
 				}
-				document.documentElement.style.overflow = '';
-				document.body.style.overflow = '';
 			}
 
+			// Tenta destruir em vários momentos para pegar o lenis-init
 			document.addEventListener('DOMContentLoaded', destroyLenis);
 			window.addEventListener('load', destroyLenis);
-			
-			// Polling de seguranÃ§a
+
+			// Polling de segurança por 5 segundos após load
 			window.addEventListener('load', function () {
 				let tentativas = 0;
 				const check = setInterval(function () {
 					destroyLenis();
 					tentativas++;
-					if (tentativas >= 10) clearInterval(check);
-				}, 500);
+					if (tentativas >= 20) clearInterval(check);
+				}, 250);
 			});
+
+			// 3. CSS via JS para garantir scroll nativo
+			const style = document.createElement('style');
+			style.textContent = `
+    @media (max-width: 1024px) {
+      html, body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        scroll-behavior: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+    }
+  `;
+			document.head.appendChild(style);
 		})();
 
-		// 4. LÃ³gica de FAQ Accordion Robusta
+		// 4. Lógica de FAQ Accordion Robusta
 		(function () {
 			document.addEventListener('click', function (e) {
 				const summary = e.target.closest('.e-n-accordion-item-title');
@@ -3795,19 +4069,19 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 				const details = summary.closest('details');
 				if (!details) return;
 
-				// Previne o comportamento padrÃ£o e para a propagaÃ§Ã£o para evitar conflitos
+				// Previne o comportamento padrão e para a propagação para evitar conflitos
 				e.preventDefault();
 				e.stopPropagation();
 
 				const isOpen = details.hasAttribute('open');
 
-				// Comportamento de acordeÃ£o: fecha todos os outros itens
+				// Comportamento de acordeão: fecha todos os outros itens
 				document.querySelectorAll('.e-n-accordion-item').forEach(item => {
 					item.removeAttribute('open');
 					item.querySelector('.e-n-accordion-item-title')?.setAttribute('aria-expanded', 'false');
 				});
 
-				// Se nÃ£o estava aberto, abre agora
+				// Se não estava aberto, abre agora
 				if (!isOpen) {
 					details.setAttribute('open', '');
 					summary.setAttribute('aria-expanded', 'true');
@@ -3821,7 +4095,7 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 				const carouselEl = document.querySelector('.elementor-element-0690b11 .swiper');
 				if (carouselEl && carouselEl.swiper) {
 					const swiper = carouselEl.swiper;
-					// ForÃ§a configuraÃ§Ãµes de autoplay
+					// Força configurações de autoplay
 					if (swiper.params) {
 						if (!swiper.params.autoplay || typeof swiper.params.autoplay !== 'object') {
 							swiper.params.autoplay = {};
@@ -3848,12 +4122,3 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/rubensgodoy.com\/wp-admin
 
 </html>
 <!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1778337160 -->
-
-
-
-
-
-
-
-
-
