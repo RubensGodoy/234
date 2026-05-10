@@ -162,13 +162,22 @@
 
 
 	<link crossorigin="" data-rocket-preconnect="" href="https://cdn.utmify.com.br" rel="preconnect">
-	<link 
-  rel="preload" 
-  as="image"
-  href="/images/cell-1.jpg"
-  fetchpriority="high">
-	<meta name="robots" content="max-image-preview:large">
 
+<link 
+rel="preload" 
+as="image" 
+href="/images/cell-1.jpg" 
+fetchpriority="high">
+
+<meta name="robots" content="max-image-preview:large">
+
+<style id="wp-img-auto-sizes-contain-inline-css">
+	img:is([sizes=auto i], [sizes^="auto," i]) {
+		contain-intrinsic-size: 3000px 1500px
+	}
+
+	/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
 
 		/* Otimização de Performance e Fluidez */
 		.scroll-bottom,
