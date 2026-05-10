@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<script>if (navigator.userAgent.match(/MSIE|Internet Explorer/i) || navigator.userAgent.match(/Trident\/7\..*?rv:11/i)) { var href = document.location.href; if (!href.match(/[?&]nowprocket/)) { if (href.indexOf("?") == -1) { if (href.indexOf("#") == -1) { document.location.href = href + "?nowprocket=1" } else { document.location.href = href.replace("#", "?nowprocket=1#") } } else { if (href.indexOf("#") == -1) { document.location.href = href + "&nowprocket=1" } else { document.location.href = href.replace("#", "&nowprocket=1#") } } } }</script>
-	
+	<script>(() => { class RocketLazyLoadScripts { constructor() { this.v = "2.0.3", this.userEvents = ["keydown", "keyup", "mousedown", "mouseup", "mousemove", "mouseover", "mouseenter", "mouseout", "mouseleave", "touchmove", "touchstart", "touchend", "touchcancel", "wheel", "click", "dblclick", "input", "visibilitychange"], this.attributeEvents = ["onblur", "onclick", "oncontextmenu", "ondblclick", "onfocus", "onmousedown", "onmouseenter", "onmouseleave", "onmousemove", "onmouseout", "onmouseover", "onmouseup", "onmousewheel", "onscroll", "onsubmit"] } async t() { this.i(), this.o(), /iP(ad|hone)/.test(navigator.userAgent) && this.h(), this.u(), this.l(this), this.m(), this.k(this), this.p(this), this._(), await Promise.all([this.R(), this.L()]), this.lastBreath = Date.now(), this.S(this), this.P(), this.D(), this.O(), this.M(), await this.C(this.delayedScripts.normal), await this.C(this.delayedScripts.defer), await this.C(this.delayedScripts.async), this.F("domReady"), await this.T(), await this.j(), await this.I(), this.F("windowLoad"), await this.A(), window.dispatchEvent(new Event("rocket-allScriptsLoaded")), this.everythingLoaded = !0, this.lastTouchEnd && await new Promise((t => setTimeout(t, 500 - Date.now() + this.lastTouchEnd))), this.H(), this.F("all"), this.U(), this.W() } i() { this.CSPIssue = sessionStorage.getItem("rocketCSPIssue"), document.addEventListener("securitypolicyviolation", (t => { this.CSPIssue || "script-src-elem" !== t.violatedDirective || "data" !== t.blockedURI || (this.CSPIssue = !0, sessionStorage.setItem("rocketCSPIssue", !0)) }), { isRocket: !0 }) } o() { window.addEventListener("pageshow", (t => { this.persisted = t.persisted, this.realWindowLoadedFired = !0 }), { isRocket: !0 }), window.addEventListener("pagehide", (() => { this.onFirstUserAction = null }), { isRocket: !0 }) } h() { let t; function e(e) { t = e } window.addEventListener("touchstart", e, { isRocket: !0 }), window.addEventListener("touchend", (function i(o) { Math.abs(o.changedTouches[0].pageX - t.changedTouches[0].pageX) < 10 && Math.abs(o.changedTouches[0].pageY - t.changedTouches[0].pageY) < 10 && o.timeStamp - t.timeStamp < 200 && (o.target.dispatchEvent(new PointerEvent("click", { target: o.target, bubbles: !0, cancelable: !0, detail: 1 })), event.preventDefault(), window.removeEventListener("touchstart", e, { isRocket: !0 }), window.removeEventListener("touchend", i, { isRocket: !0 })) }), { isRocket: !0 }) } q(t) { this.userActionTriggered || ("mousemove" !== t.type || this.firstMousemoveIgnored ? "keyup" === t.type || "mouseover" === t.type || "mouseout" === t.type || (this.userActionTriggered = !0, this.onFirstUserAction && this.onFirstUserAction()) : this.firstMousemoveIgnored = !0), "click" === t.type && t.preventDefault(), this.savedUserEvents.length > 0 && (t.stopPropagation(), t.stopImmediatePropagation()), "touchstart" === this.lastEvent && "touchend" === t.type && (this.lastTouchEnd = Date.now()), "click" === t.type && (this.lastTouchEnd = 0), this.lastEvent = t.type, this.savedUserEvents.push(t) } u() { this.savedUserEvents = [], this.userEventHandler = this.q.bind(this), this.userEvents.forEach((t => window.addEventListener(t, this.userEventHandler, { passive: !1, isRocket: !0 }))) } U() { this.userEvents.forEach((t => window.removeEventListener(t, this.userEventHandler, { passive: !1, isRocket: !0 }))), this.savedUserEvents.forEach((t => { t.target.dispatchEvent(new window[t.constructor.name](t.type, t)) })) } m() { this.eventsMutationObserver = new MutationObserver((t => { const e = "return false"; for (const i of t) { if ("attributes" === i.type) { const t = i.target.getAttribute(i.attributeName); t && t !== e && (i.target.setAttribute("data-rocket-" + i.attributeName, t), i.target["rocket" + i.attributeName] = new Function("event", t), i.target.setAttribute(i.attributeName, e)) } "childList" === i.type && i.addedNodes.forEach((t => { if (t.nodeType === Node.ELEMENT_NODE) for (const i of t.attributes) this.attributeEvents.includes(i.name) && i.value && "" !== i.value && (t.setAttribute("data-rocket-" + i.name, i.value), t["rocket" + i.name] = new Function("event", i.value), t.setAttribute(i.name, e)) })) } })), this.eventsMutationObserver.observe(document, { subtree: !0, childList: !0, attributeFilter: this.attributeEvents }) } H() { this.eventsMutationObserver.disconnect(), this.attributeEvents.forEach((t => { document.querySelectorAll("[data-rocket-" + t + "]").forEach((e => { e.setAttribute(t, e.getAttribute("data-rocket-" + t)), e.removeAttribute("data-rocket-" + t) })) })) } k(t) { Object.defineProperty(HTMLElement.prototype, "onclick", { get() { return this.rocketonclick || null }, set(e) { this.rocketonclick = e, this.setAttribute(t.everythingLoaded ? "onclick" : "data-rocket-onclick", "this.rocketonclick(event)") } }) } S(t) { function e(e, i) { let o = e[i]; e[i] = null, Object.defineProperty(e, i, { get: () => o, set(s) { t.everythingLoaded ? o = s : e["rocket" + i] = o = s } }) } e(document, "onreadystatechange"), e(window, "onload"), e(window, "onpageshow"); try { Object.defineProperty(document, "readyState", { get: () => t.rocketReadyState, set(e) { t.rocketReadyState = e }, configurable: !0 }), document.readyState = "loading" } catch (t) { console.log("WPRocket DJE readyState conflict, bypassing") } } l(t) { this.originalAddEventListener = EventTarget.prototype.addEventListener, this.originalRemoveEventListener = EventTarget.prototype.removeEventListener, this.savedEventListeners = [], EventTarget.prototype.addEventListener = function (e, i, o) { o && o.isRocket || !t.B(e, this) && !t.userEvents.includes(e) || t.B(e, this) && !t.userActionTriggered || e.startsWith("rocket-") || t.everythingLoaded ? t.originalAddEventListener.call(this, e, i, o) : t.savedEventListeners.push({ target: this, remove: !1, type: e, func: i, options: o }) }, EventTarget.prototype.removeEventListener = function (e, i, o) { o && o.isRocket || !t.B(e, this) && !t.userEvents.includes(e) || t.B(e, this) && !t.userActionTriggered || e.startsWith("rocket-") || t.everythingLoaded ? t.originalRemoveEventListener.call(this, e, i, o) : t.savedEventListeners.push({ target: this, remove: !0, type: e, func: i, options: o }) } } F(t) { "all" === t && (EventTarget.prototype.addEventListener = this.originalAddEventListener, EventTarget.prototype.removeEventListener = this.originalRemoveEventListener), this.savedEventListeners = this.savedEventListeners.filter((e => { let i = e.type, o = e.target || window; return "domReady" === t && "DOMContentLoaded" !== i && "readystatechange" !== i || ("windowLoad" === t && "load" !== i && "readystatechange" !== i && "pageshow" !== i || (this.B(i, o) && (i = "rocket-" + i), e.remove ? o.removeEventListener(i, e.func, e.options) : o.addEventListener(i, e.func, e.options), !1)) })) } p(t) { let e; function i(e) { return t.everythingLoaded ? e : e.split(" ").map((t => "load" === t || t.startsWith("load.") ? "rocket-jquery-load" : t)).join(" ") } function o(o) { function s(e) { const s = o.fn[e]; o.fn[e] = o.fn.init.prototype[e] = function () { return this[0] === window && t.userActionTriggered && ("string" == typeof arguments[0] || arguments[0] instanceof String ? arguments[0] = i(arguments[0]) : "object" == typeof arguments[0] && Object.keys(arguments[0]).forEach((t => { const e = arguments[0][t]; delete arguments[0][t], arguments[0][i(t)] = e }))), s.apply(this, arguments), this } } if (o && o.fn && !t.allJQueries.includes(o)) { const e = { DOMContentLoaded: [], "rocket-DOMContentLoaded": [] }; for (const t in e) document.addEventListener(t, (() => { e[t].forEach((t => t())) }), { isRocket: !0 }); o.fn.ready = o.fn.init.prototype.ready = function (i) { function s() { parseInt(o.fn.jquery) > 2 ? setTimeout((() => i.bind(document)(o))) : i.bind(document)(o) } return t.realDomReadyFired ? !t.userActionTriggered || t.fauxDomReadyFired ? s() : e["rocket-DOMContentLoaded"].push(s) : e.DOMContentLoaded.push(s), o([]) }, s("on"), s("one"), s("off"), t.allJQueries.push(o) } e = o } t.allJQueries = [], o(window.jQuery), Object.defineProperty(window, "jQuery", { get: () => e, set(t) { o(t) } }) } P() { const t = new Map; document.write = document.writeln = function (e) { const i = document.currentScript, o = document.createRange(), s = i.parentElement; let n = t.get(i); void 0 === n && (n = i.nextSibling, t.set(i, n)); const c = document.createDocumentFragment(); o.setStart(c, 0), c.appendChild(o.createContextualFragment(e)), s.insertBefore(c, n) } } async R() { return new Promise((t => { this.userActionTriggered ? t() : this.onFirstUserAction = t })) } async L() { return new Promise((t => { document.addEventListener("DOMContentLoaded", (() => { this.realDomReadyFired = !0, t() }), { isRocket: !0 }) })) } async I() { return this.realWindowLoadedFired ? Promise.resolve() : new Promise((t => { window.addEventListener("load", t, { isRocket: !0 }) })) } M() { this.pendingScripts = []; this.scriptsMutationObserver = new MutationObserver((t => { for (const e of t) e.addedNodes.forEach((t => { "SCRIPT" !== t.tagName || t.noModule || t.isWPRocket || this.pendingScripts.push({ script: t, promise: new Promise((e => { const i = () => { const i = this.pendingScripts.findIndex((e => e.script === t)); i >= 0 && this.pendingScripts.splice(i, 1), e() }; t.addEventListener("load", i, { isRocket: !0 }), t.addEventListener("error", i, { isRocket: !0 }), setTimeout(i, 1e3) })) }) })) })), this.scriptsMutationObserver.observe(document, { childList: !0, subtree: !0 }) } async j() { await this.J(), this.pendingScripts.length ? (await this.pendingScripts[0].promise, await this.j()) : this.scriptsMutationObserver.disconnect() } D() { this.delayedScripts = { normal: [], async: [], defer: [] }, document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach((t => { t.hasAttribute("data-rocket-src") ? t.hasAttribute("async") && !1 !== t.async ? this.delayedScripts.async.push(t) : t.hasAttribute("defer") && !1 !== t.defer || "module" === t.getAttribute("data-rocket-type") ? this.delayedScripts.defer.push(t) : this.delayedScripts.normal.push(t) : this.delayedScripts.normal.push(t) })) } async _() { await this.L(); let t = []; document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach((e => { let i = e.getAttribute("data-rocket-src"); if (i && !i.startsWith("data:")) { i.startsWith("//") && (i = location.protocol + i); try { const o = new URL(i).origin; o !== location.origin && t.push({ src: o, crossOrigin: e.crossOrigin || "module" === e.getAttribute("data-rocket-type") }) } catch (t) { } } })), t = [...new Map(t.map((t => [JSON.stringify(t), t]))).values()], this.N(t, "preconnect") } async $(t) { if (await this.G(), !0 !== t.noModule || !("noModule" in HTMLScriptElement.prototype)) return new Promise((e => { let i; function o() { (i || t).setAttribute("data-rocket-status", "executed"), e() } try { if (navigator.userAgent.includes("Firefox/") || "" === navigator.vendor || this.CSPIssue) i = document.createElement("script"), [...t.attributes].forEach((t => { let e = t.nodeName; "type" !== e && ("data-rocket-type" === e && (e = "type"), "data-rocket-src" === e && (e = "src"), i.setAttribute(e, t.nodeValue)) })), t.text && (i.text = t.text), t.nonce && (i.nonce = t.nonce), i.hasAttribute("src") ? (i.addEventListener("load", o, { isRocket: !0 }), i.addEventListener("error", (() => { i.setAttribute("data-rocket-status", "failed-network"), e() }), { isRocket: !0 }), setTimeout((() => { i.isConnected || e() }), 1)) : (i.text = t.text, o()), i.isWPRocket = !0, t.parentNode.replaceChild(i, t); else { const i = t.getAttribute("data-rocket-type"), s = t.getAttribute("data-rocket-src"); i ? (t.type = i, t.removeAttribute("data-rocket-type")) : t.removeAttribute("type"), t.addEventListener("load", o, { isRocket: !0 }), t.addEventListener("error", (i => { this.CSPIssue && i.target.src.startsWith("data:") ? (console.log("WPRocket: CSP fallback activated"), t.removeAttribute("src"), this.$(t).then(e)) : (t.setAttribute("data-rocket-status", "failed-network"), e()) }), { isRocket: !0 }), s ? (t.fetchPriority = "high", t.removeAttribute("data-rocket-src"), t.src = s) : t.src = "data:text/javascript;base64," + window.btoa(unescape(encodeURIComponent(t.text))) } } catch (i) { t.setAttribute("data-rocket-status", "failed-transform"), e() } })); t.setAttribute("data-rocket-status", "skipped") } async C(t) { const e = t.shift(); return e ? (e.isConnected && await this.$(e), this.C(t)) : Promise.resolve() } O() { this.N([...this.delayedScripts.normal, ...this.delayedScripts.defer, ...this.delayedScripts.async], "preload") } N(t, e) { this.trash = this.trash || []; let i = !0; var o = document.createDocumentFragment(); t.forEach((t => { const s = t.getAttribute && t.getAttribute("data-rocket-src") || t.src; if (s && !s.startsWith("data:")) { const n = document.createElement("link"); n.href = s, n.rel = e, "preconnect" !== e && (n.as = "script", n.fetchPriority = i ? "high" : "low"), t.getAttribute && "module" === t.getAttribute("data-rocket-type") && (n.crossOrigin = !0), t.crossOrigin && (n.crossOrigin = t.crossOrigin), t.integrity && (n.integrity = t.integrity), t.nonce && (n.nonce = t.nonce), o.appendChild(n), this.trash.push(n), i = !1 } })), document.head.appendChild(o) } W() { this.trash.forEach((t => t.remove())) } async T() { try { document.readyState = "interactive" } catch (t) { } this.fauxDomReadyFired = !0; try { await this.G(), document.dispatchEvent(new Event("rocket-readystatechange")), await this.G(), document.rocketonreadystatechange && document.rocketonreadystatechange(), await this.G(), document.dispatchEvent(new Event("rocket-DOMContentLoaded")), await this.G(), window.dispatchEvent(new Event("rocket-DOMContentLoaded")) } catch (t) { console.error(t) } } async A() { try { document.readyState = "complete" } catch (t) { } try { await this.G(), document.dispatchEvent(new Event("rocket-readystatechange")), await this.G(), document.rocketonreadystatechange && document.rocketonreadystatechange(), await this.G(), window.dispatchEvent(new Event("rocket-load")), await this.G(), window.rocketonload && window.rocketonload(), await this.G(), this.allJQueries.forEach((t => t(window).trigger("rocket-jquery-load"))), await this.G(); const t = new Event("rocket-pageshow"); t.persisted = this.persisted, window.dispatchEvent(t), await this.G(), window.rocketonpageshow && window.rocketonpageshow({ persisted: this.persisted }) } catch (t) { console.error(t) } } async G() { Date.now() - this.lastBreath > 45 && (await this.J(), this.lastBreath = Date.now()) } async J() { return document.hidden ? new Promise((t => setTimeout(t))) : new Promise((t => requestAnimationFrame(t))) } B(t, e) { return e === document && "readystatechange" === t || (e === document && "DOMContentLoaded" === t || (e === window && "DOMContentLoaded" === t || (e === window && "load" === t || e === window && "pageshow" === t))) } static run() { (new RocketLazyLoadScripts).t() } } RocketLazyLoadScripts.run() })();</script>
 
 	<title>Low Ticket do Zero</title>
 	<link crossorigin="" data-rocket-preconnect="" href="https://cdn.utmify.com.br" rel="preconnect">
@@ -498,7 +498,76 @@
 	<link rel="stylesheet" id="widget-divider-css" href="css/widget-divider.min.css" media="all">
 	<link rel="stylesheet" id="widget-nested-accordion-css" href="css/widget-nested-accordion.min.css" media="all">
 	<link rel="stylesheet" id="elementor-post-19-css" href="css/post-19.css" media="all">
-	
+	<style id="rocket-lazyload-inline-css">
+		.rll-youtube-player {
+			position: relative;
+			padding-bottom: 56.23%;
+			height: 0;
+			overflow: hidden;
+			max-width: 100%;
+		}
+
+		.rll-youtube-player:focus-within {
+			outline: 2px solid currentColor;
+			outline-offset: 5px;
+		}
+
+		.rll-youtube-player iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 100;
+			background: 0 0
+		}
+
+		.rll-youtube-player img {
+			bottom: 0;
+			display: block;
+			left: 0;
+			margin: auto;
+			max-width: 100%;
+			width: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			border: none;
+			height: auto;
+			-webkit-transition: .4s all;
+			-moz-transition: .4s all;
+			transition: .4s all
+		}
+
+		.rll-youtube-player img:hover {
+			-webkit-filter: brightness(75%)
+		}
+
+		.rll-youtube-player .play {
+			height: 100%;
+			width: 100%;
+			left: 0;
+			top: 0;
+			position: absolute;
+			background: url(images/youtube.png) no-repeat center;
+			background-color: transparent !important;
+			cursor: pointer;
+			border: none;
+		}
+
+		.wp-embed-responsive .wp-has-aspect-ratio .rll-youtube-player {
+			position: absolute;
+			padding-bottom: 0;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0
+		}
+
+		/*# sourceURL=rocket-lazyload-inline-css */
+	</style>
 	<script type="text/javascript"
 		src="https://guiadogui.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"
 		defer=""></script>
@@ -540,7 +609,14 @@
 	<link rel="apple-touch-icon" href="images/cropped-Camada-9-11-180x180.jpg">
 	<meta name="msapplication-TileImage"
 		content="https://guiadogui.com/wp-content/uploads/2026/01/cropped-Camada-9-11-270x270.jpg">
-	
+	<noscript>
+		<style id="rocket-lazyload-nojs-css">
+			.rll-youtube-player,
+			[data-lazy-src] {
+				display: none !important;
+			}
+		</style>
+	</noscript>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<style>
 		.e-n-accordion-item summary {
@@ -914,20 +990,20 @@
 			<div class="e-con-inner">
 				<div class="elementor-element elementor-element-45de18c e-con-full e-flex e-con e-child"
 					data-id="45de18c" data-element_type="container" data-e-type="container">
-					<div class="elementor-element elementor-element-2c38f71  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-2c38f71 scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="2c38f71" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span>
 							Identificação</p>
 					</div>
-					<div class="elementor-element elementor-element-3af3b37 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-3af3b37 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="3af3b37" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">Se você <span style="font-weight:700"
 								class="deg">sente que o marketing digital parece sempre prometer demais</span> e
 							entregar de menos, você não está errado.</p>
 					</div>
-					<div class="elementor-element elementor-element-28873b6 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-28873b6 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="28873b6" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">Não é falta de esforço. É falta de um
@@ -938,7 +1014,7 @@
 				</div>
 				<div class="elementor-element elementor-element-29f8322 e-con-full e-flex e-con e-child"
 					data-id="29f8322" data-element_type="container" data-e-type="container">
-					<div class="elementor-element elementor-element-5c1fe8e elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-5c1fe8e elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="5c1fe8e" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">A <span
@@ -1222,11 +1298,11 @@
 				<div class="elementor-element elementor-element-d96366a blur elementor-widget elementor-widget-image"
 					data-id="d96366a" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 					<img decoding="async" width="558" height="744"
-						
+						src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20558%20744'%3E%3C/svg%3E"
 						class="attachment-full size-full wp-image-82" alt=""
-						srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1.png.webp 558w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1-225x300.png.webp 225w"
-						sizes="(max-width: 558px) 100vw, 558px"
-						src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1.png.webp"><noscript><img
+						data-lazy-srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1.png.webp 558w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1-225x300.png.webp 225w"
+						data-lazy-sizes="(max-width: 558px) 100vw, 558px"
+						data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1.png.webp"><noscript><img
 							loading="lazy" decoding="async" width="558" height="744"
 							src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Camada-4-1-1.png.webp"
 							class="attachment-full size-full wp-image-82" alt=""
@@ -1236,9 +1312,9 @@
 				<div class="elementor-element elementor-element-276ae5c elementor-widget__width-inherit elementor-widget-mobile__width-inherit elementor-widget elementor-widget-image"
 					data-id="276ae5c" data-element_type="widget" data-e-type="widget" data-widget_type="image.default">
 					<img decoding="async" width="1920" height="1220"
-						
+						src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201920%201220'%3E%3C/svg%3E"
 						class="attachment-full size-full wp-image-84" alt=""
-						src="https://guiadogui.com/wp-content/uploads/2026/01/Group-1707478685.svg"><noscript><img
+						data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/Group-1707478685.svg"><noscript><img
 							loading="lazy" decoding="async" width="1920" height="1220"
 							src="https://guiadogui.com/wp-content/uploads/2026/01/Group-1707478685.svg"
 							class="attachment-full size-full wp-image-84" alt="" /></noscript>
@@ -1247,28 +1323,28 @@
 					data-id="a1881c1" data-element_type="widget" data-e-type="widget" data-settings="{"
 					_position":"absolute"}"="" data-widget_type="image.default">
 					<img decoding="async" width="1005" height="25"
-						
+						src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201005%2025'%3E%3C/svg%3E"
 						class="attachment-full size-full wp-image-85" alt=""
-						src="https://guiadogui.com/wp-content/uploads/2026/01/Vector2.svg"><noscript><img
+						data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/Vector2.svg"><noscript><img
 							loading="lazy" decoding="async" width="1005" height="25"
 							src="https://guiadogui.com/wp-content/uploads/2026/01/Vector2.svg"
 							class="attachment-full size-full wp-image-85" alt="" /></noscript>
 				</div>
 				<div class="elementor-element elementor-element-3910a89 e-con-full e-flex e-con e-child"
 					data-id="3910a89" data-element_type="container" data-e-type="container">
-					<div class="elementor-element elementor-element-684cf12  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-684cf12 scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="684cf12" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Sobre mim
 						</p>
 					</div>
-					<div class="elementor-element elementor-element-17e9ac2 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-17e9ac2 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="17e9ac2" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">Eu não comecei com vantagem. <span
 								style="font-weight:700" class="deg">Comecei com necessidade.</span></p>
 					</div>
-					<div class="elementor-element elementor-element-4b40476 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-4b40476 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="4b40476" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">Eu não tinha experiência, audiência,
@@ -1284,7 +1360,7 @@
 								prometer o que não depende de você.</span>
 						</p>
 					</div>
-					<div class="elementor-element elementor-element-6c2ebb9 e-con-full  e-flex e-con e-child"
+					<div class="elementor-element elementor-element-6c2ebb9 e-con-full scroll-bottom e-flex e-con e-child"
 						data-id="6c2ebb9" data-element_type="container" data-e-type="container">
 						<div class="elementor-element elementor-element-6d9560e elementor-widget elementor-widget-button"
 							data-id="6d9560e" data-element_type="widget" data-e-type="widget"
@@ -1353,20 +1429,20 @@
 			<div class="e-con-inner">
 				<div class="elementor-element elementor-element-93fe564 e-con-full e-flex e-con e-child"
 					data-id="93fe564" data-element_type="container" data-e-type="container">
-					<div class="elementor-element elementor-element-ebf1894  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-ebf1894 scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="ebf1894" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Mecanismo
 						</p>
 					</div>
-					<div class="elementor-element elementor-element-8a49b5f elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+					<div class="elementor-element elementor-element-8a49b5f elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 						data-id="8a49b5f" data-element_type="widget" data-e-type="widget"
 						data-widget_type="heading.default">
 						<p class="elementor-heading-title elementor-size-default">O erro de quem tenta <span
 								style="font-weight:700" class="deg">viver do digital não é falta de esforço. </span> É
 							começar pelo lugar errado.</p>
 					</div>
-					<div class="elementor-element elementor-element-2145268 e-grid e-con-full  e-con e-child"
+					<div class="elementor-element elementor-element-2145268 e-grid e-con-full scroll-bottom e-con e-child"
 						data-id="2145268" data-element_type="container" data-e-type="container">
 						<div class="elementor-element elementor-element-6b86993 e-con-full box e-flex e-con e-child"
 							data-id="6b86993" data-element_type="container" data-e-type="container">
@@ -2055,7 +2131,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="elementor-element elementor-element-18a57f8  elementor-widget elementor-widget-button"
+					<div class="elementor-element elementor-element-18a57f8 scroll-bottom elementor-widget elementor-widget-button"
 						data-id="18a57f8" data-element_type="widget" data-e-type="widget"
 						data-widget_type="button.default">
 						<a class="elementor-button elementor-button-link elementor-size-sm" href="#oferta">
@@ -2078,9 +2154,9 @@
 						data-id="f68720a" data-element_type="widget" data-e-type="widget"
 						data-widget_type="image.default">
 						<img decoding="async" width="1438" height="1442"
-							
+							src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201438%201442'%3E%3C/svg%3E"
 							class="attachment-full size-full wp-image-147" alt=""
-							src="https://guiadogui.com/wp-content/uploads/2026/01/Circulos.svg"><noscript><img
+							data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/Circulos.svg"><noscript><img
 								loading="lazy" decoding="async" width="1438" height="1442"
 								src="https://guiadogui.com/wp-content/uploads/2026/01/Circulos.svg"
 								class="attachment-full size-full wp-image-147" alt="" /></noscript>
@@ -2089,13 +2165,13 @@
 						data-id="94d3877" data-element_type="container" data-e-type="container">
 						<div class="elementor-element elementor-element-81ef59d e-con-full e-flex e-con e-child"
 							data-id="81ef59d" data-element_type="container" data-e-type="container">
-							<div class="elementor-element elementor-element-ed432b0  elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-ed432b0 scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="ed432b0" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span>
 									Área de membros</p>
 							</div>
-							<div class="elementor-element elementor-element-814e48c e-con-full  e-flex e-con e-child"
+							<div class="elementor-element elementor-element-814e48c e-con-full scroll-bottom e-flex e-con e-child"
 								data-id="814e48c" data-element_type="container" data-e-type="container">
 								<div class="elementor-element elementor-element-f683165 elementor-widget__width-initial elementor-widget elementor-widget-heading"
 									data-id="f683165" data-element_type="widget" data-e-type="widget"
@@ -2118,11 +2194,11 @@
 							data-id="bab28f8" data-element_type="widget" data-e-type="widget"
 							data-widget_type="image.default">
 							<img decoding="async" width="1214" height="668"
-								
+								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201214%20668'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-130" alt=""
-								srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1.png.webp 1214w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1-300x165.png.webp 300w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1-1024x563.png.webp 1024w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1-768x423.png.webp 768w"
-								sizes="(max-width: 1214px) 100vw, 1214px"
-								src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1.png.webp"><noscript><img
+								data-lazy-srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1.png.webp 1214w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1-300x165.png.webp 300w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1-1024x563.png.webp 1024w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1-768x423.png.webp 768w"
+								data-lazy-sizes="(max-width: 1214px) 100vw, 1214px"
+								data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1.png.webp"><noscript><img
 									loading="lazy" decoding="async" width="1214" height="668"
 									src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Mockup-Edit-me-MacBook-Pro-1-1.png.webp"
 									class="attachment-full size-full wp-image-130" alt=""
@@ -2133,11 +2209,11 @@
 							data-id="787c282" data-element_type="widget" data-e-type="widget" data-settings="{"
 							_position":"absolute"}"="" data-widget_type="image.default">
 							<img decoding="async" width="1346" height="711"
-								
+								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201346%20711'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-140" alt=""
-								srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp 1346w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-300x158.png.webp 300w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-1024x541.png.webp 1024w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-768x406.png.webp 768w"
-								sizes="(max-width: 1346px) 100vw, 1346px"
-								src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp"><noscript><img
+								data-lazy-srcset="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp 1346w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-300x158.png.webp 300w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-1024x541.png.webp 1024w,  https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1-768x406.png.webp 768w"
+								data-lazy-sizes="(max-width: 1346px) 100vw, 1346px"
+								data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp"><noscript><img
 									loading="lazy" decoding="async" width="1346" height="711"
 									src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/Profile-1.png.webp"
 									class="attachment-full size-full wp-image-140" alt=""
@@ -2458,201 +2534,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="elementor-element elementor-element-1ab564e e-flex e-con-boxed e-con e-parent" data-id="1ab564e"
-			data-element_type="container" data-e-type="container">
-			<div class="e-con-inner">
-				<div class="elementor-element elementor-element-48df9d8  elementor-widget elementor-widget-heading"
-					data-id="48df9d8" data-element_type="widget" data-e-type="widget"
-					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Conteúdos</p>
-				</div>
-				<div class="elementor-element elementor-element-3c99f7f elementor-widget__width-initial  elementor-widget elementor-widget-heading"
-					data-id="3c99f7f" data-element_type="widget" data-e-type="widget"
-					data-widget_type="heading.default">
-					<p class="elementor-heading-title elementor-size-default">Tudo o que você precisa para sair do zero
-						e <span style="font-weight:700" class="deg">construir sua primeira estrutura de vendas no
-							digital,</span> passo a passo, sem confusão.</p>
-				</div>
-				<div class="elementor-element elementor-element-af175cf blur elementor-widget elementor-widget-image-carousel"
-					data-id="af175cf" data-element_type="widget" data-e-type="widget" data-settings="{"
-					slides_to_show":"4","slides_to_show_mobile":"2","navigation":"none","autoplay_speed":0,"speed":5000,"image_spacing_custom":{"unit":"px","size":10,"sizes":[]},"autoplay":"yes","infinite":"yes","image_spacing_custom_tablet":{"unit":"px","size":"","sizes":[]},"image_spacing_custom_mobile":{"unit":"px","size":"","sizes":[]}}"=""
-					data-widget_type="image-carousel.default">
-					<div class="elementor-image-carousel-wrapper swiper" role="region" aria-roledescription="carousel"
-						aria-label="Carrossel de imagens" dir="ltr">
-						<div class="elementor-image-carousel swiper-wrapper" aria-live="off">
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-01"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-01.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-01.png.webp"
-											alt="mądulo-01" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-02"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-02.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-02.png.webp"
-											alt="mądulo-02" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-03"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-03.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-03.png.webp"
-											alt="mądulo-03" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-04"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-04.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-04.png.webp"
-											alt="mądulo-04" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-05"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-05.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-05.png.webp"
-											alt="mądulo-05" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-06"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-06.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-06.png.webp"
-											alt="mądulo-06" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-07"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-07.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-07.png.webp"
-											alt="mądulo-07" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-08"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-08-1.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-08-1.png.webp"
-											alt="mądulo-08" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="mądulo-09"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-09-1.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/madulo-09-1.png.webp"
-											alt="mądulo-09" /></noscript></figure>
-							</div>
-							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 10">
-								<figure class="swiper-slide-inner"><img width="1200" height="1800" decoding="async"
-										class="swiper-slide-image"
-										
-										alt="MÓDULO-10"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/MODULO-10-1.png.webp"><noscript><img
-											width="1200" height="1800" decoding="async" class="swiper-slide-image"
-											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/MODULO-10-1.png.webp"
-											alt="MÓDULO-10" /></noscript></figure>
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<div class="elementor-element elementor-element-c522752 e-con-full  e-flex e-con e-child"
-					data-id="c522752" data-element_type="container" data-e-type="container">
-					<div class="elementor-element elementor-element-0cd6333 elementor-widget__width-initial elementor-widget elementor-widget-heading"
-						data-id="0cd6333" data-element_type="widget" data-e-type="widget"
-						data-widget_type="heading.default">
-						<p class="elementor-heading-title elementor-size-default">Conteúdo direto e reto, <span
-								style="font-weight:700;color: white">aplicado e sem enrolação.</span></p>
-					</div>
-					<div class="elementor-element elementor-element-d12cc6b elementor-widget elementor-widget-button"
-						data-id="d12cc6b" data-element_type="widget" data-e-type="widget"
-						data-widget_type="button.default">
-						<a class="elementor-button elementor-button-link elementor-size-sm" href="#oferta">
-							<span class="elementor-button-content-wrapper">
-								<span class="elementor-button-icon">
-									<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16"
-										fill="none">
-										<path
-											d="M12.1087 4.2675L1.70858 15.0262L0 13.2588L10.3989 2.5H1.23371V0H14.5254V13.75H12.1087V4.2675Z"
-											fill="black" style="fill:black;fill-opacity:1;"></path>
-									</svg> </span>
-								<span class="elementor-button-text">quero ACESSAR O TREINAMENTO AGORA</span>
-							</span>
-						</a>
-					</div>
-					<div class="elementor-element elementor-element-d0a07a3 e-con-full e-flex e-con e-child"
-						data-id="d0a07a3" data-element_type="container" data-e-type="container">
-						<div class="elementor-element elementor-element-e6cc8f8 elementor-widget__width-initial profile elementor-widget elementor-widget-image"
-							data-id="e6cc8f8" data-element_type="widget" data-e-type="widget"
-							data-widget_type="image.default">
-							<img decoding="async" width="160" height="160" src="images/3.jpg.webp"
-								class="attachment-full size-full wp-image-249" alt=""
-								srcset="images/3.jpg.webp 160w, images/3-150x150.jpg.webp 150w"
-								sizes="(max-width: 160px) 100vw, 160px">
-						</div>
-						<div class="elementor-element elementor-element-dd3abd8 elementor-widget__width-initial profile elementor-widget elementor-widget-image"
-							data-id="dd3abd8" data-element_type="widget" data-e-type="widget"
-							data-widget_type="image.default">
-							<img fetchpriority="high" decoding="async" width="320" height="320" src="images/2.jpg.webp"
-								class="attachment-full size-full wp-image-248" alt=""
-								srcset="images/2.jpg.webp 320w, images/2-300x300.jpg.webp 300w, images/2-150x150.jpg.webp 150w"
-								sizes="(max-width: 320px) 100vw, 320px">
-						</div>
-						<div class="elementor-element elementor-element-fad369c elementor-widget__width-initial profile elementor-widget elementor-widget-image"
-							data-id="fad369c" data-element_type="widget" data-e-type="widget"
-							data-widget_type="image.default">
-							<img decoding="async" width="320" height="320" src="images/4.jpg.webp"
-								class="attachment-full size-full wp-image-253" alt=""
-								srcset="images/4.jpg.webp 320w, images/4-300x300.jpg.webp 300w, images/4-150x150.jpg.webp 150w"
-								sizes="(max-width: 320px) 100vw, 320px">
-						</div>
-						<div class="elementor-element elementor-element-950ea8e elementor-widget__width-initial profile elementor-widget elementor-widget-image"
-							data-id="950ea8e" data-element_type="widget" data-e-type="widget"
-							data-widget_type="image.default">
-							<img decoding="async" width="1080" height="1080"
-								src="images/626423392_18008947634832577_1037114467578374593_n.jpg.webp"
-								class="attachment-full size-full wp-image-275" alt=""
-								srcset="images/626423392_18008947634832577_1037114467578374593_n.jpg.webp 1080w, images/626423392_18008947634832577_1037114467578374593_n-300x300.jpg.webp 300w, images/626423392_18008947634832577_1037114467578374593_n-1024x1024.jpg.webp 1024w, images/626423392_18008947634832577_1037114467578374593_n-150x150.jpg.webp 150w, images/626423392_18008947634832577_1037114467578374593_n-768x768.jpg.webp 768w"
-								sizes="(max-width: 1080px) 100vw, 1080px">
-						</div>
-						<div class="elementor-element elementor-element-f35e3eb elementor-widget__width-initial elementor-widget elementor-widget-heading"
-							data-id="f35e3eb" data-element_type="widget" data-e-type="widget"
-							data-widget_type="heading.default">
-							<p class="elementor-heading-title elementor-size-default">Mentor de <span
-									style="font-weight:400;color: white">+2.000</span> Alunos!</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<div class="elementor-element elementor-element-98a1c93 e-flex e-con-boxed e-con e-parent" data-id="98a1c93"
 			data-element_type="container" data-e-type="container" data-settings="{"
 			background_background":"classic"}"="">
@@ -2675,157 +2557,25 @@
 						</div>
 					</div>
 				</div>
-				<div class="elementor-element elementor-element-afd6b12  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-afd6b12 scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="afd6b12" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Depoimentos
 					</p>
 				</div>
-				<div class="elementor-element elementor-element-d8b345e elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-d8b345e elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="d8b345e" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><b>Resultados de quem saiu do zero</b> e
 						aplicou o método</p>
 				</div>
-				<div class="elementor-element elementor-element-742cec2 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-742cec2 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="742cec2" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><b>Sem promessas milagrosas.</b> Só
 						pessoas comuns executando um processo simples e vendo as vendas acontecerem na prática.</p>
 				</div>
-				<div class="elementor-element elementor-element-c04de8b  elementor-pagination-type-progressbar elementor-widget elementor-widget-n-carousel"
-					data-id="c04de8b" data-element_type="widget" data-e-type="widget" data-settings="{"
-					carousel_items":[{"slide_title":"slide="" #1","_id":"4eb756f"},{"slide_title":"slide=""
-					#2","_id":"51f67a5"},{"_id":"67e5f89","slide_title":"slide=""
-					#3"}],"slides_to_show":"3","slides_to_scroll":"3","pagination":"progressbar","slides_to_show_tablet":"2","slides_to_show_mobile":"1","speed":500,"image_spacing_custom":{"unit":"px","size":10,"sizes":[]},"image_spacing_custom_tablet":{"unit":"px","size":"","sizes":[]},"image_spacing_custom_mobile":{"unit":"px","size":"","sizes":[]}}"=""
-					data-widget_type="nested-carousel.default">
-					<div class="e-n-carousel swiper" role="region" aria-roledescription="carousel" aria-label="Carousel"
-						dir="ltr">
-						<div class="swiper-wrapper" aria-live="polite">
-							<div class="swiper-slide" data-slide="1" role="group" aria-roledescription="slide"
-								aria-label="1 of 3">
-								<div class="elementor-element elementor-element-5ebfadc e-flex e-con-boxed e-con e-child"
-									data-id="5ebfadc" data-element_type="container" data-e-type="container">
-									<div class="e-con-inner">
-										<div class="elementor-element elementor-element-1a27e6a elementor-widget elementor-widget-video"
-											data-id="1a27e6a" data-element_type="widget" data-e-type="widget"
-											data-settings="{" youtube_url":"https:\="" \="" youtu.be\=""
-											uqkge-qkdfm?si="0XsIJ2HYmg2hTy4h"
-											,"show_image_overlay":"yes","image_overlay":{"url":"https:\=""
-											guiadogui.com\="" wp-content\="" uploads\="" 2026\="" 02\=""
-											img_8576.png","id":199,"size":"","alt":"","source":"library"},"video_type":"youtube"}""=""
-											data-widget_type="video.default">
-											<div class="elementor-wrapper elementor-open-inline">
-												<div class="elementor-video"></div>
-												<div style="background-image:url(https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/IMG_8576.png.webp); background-size:cover; background-position:center;"
-													class="elementor-custom-embed-image-overlay"
-													style="">
-													<div class="elementor-custom-embed-play" role="button"
-														aria-label="Reproduzir vídeo" tabindex="0">
-														<svg aria-hidden="true"
-															class="e-font-icon-svg e-fas-play-circle"
-															viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z">
-															</path>
-														</svg>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="elementor-element elementor-element-7eb1f86  elementor-widget elementor-widget-heading"
-											data-id="7eb1f86" data-element_type="widget" data-e-type="widget"
-											data-widget_type="heading.default">
-											<p class="elementor-heading-title elementor-size-default"><span
-													class="deg">//</span> Aluno Natan fez <b>R$30.000</b></p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide" data-slide="2" role="group" aria-roledescription="slide"
-								aria-label="2 of 3">
-								<div class="elementor-element elementor-element-03c5873 e-flex e-con-boxed e-con e-child"
-									data-id="03c5873" data-element_type="container" data-e-type="container">
-									<div class="e-con-inner">
-										<div class="elementor-element elementor-element-6e6d407 elementor-widget elementor-widget-video"
-											data-id="6e6d407" data-element_type="widget" data-e-type="widget"
-											data-settings="{" youtube_url":"https:\="" \="" youtu.be\=""
-											rb6jgrausmc?si="nDZYqBSX3iQ_rQBF"
-											,"show_image_overlay":"yes","image_overlay":{"url":"https:\=""
-											guiadogui.com\="" wp-content\="" uploads\="" 2026\="" 02\=""
-											img_8558.png","id":200,"size":"","alt":"","source":"library"},"video_type":"youtube"}""=""
-											data-widget_type="video.default">
-											<div class="elementor-wrapper elementor-open-inline">
-												<div class="elementor-video"></div>
-												<div style="background-image:url(https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/02/IMG_8558.png.webp); background-size:cover; background-position:center;"
-													class="elementor-custom-embed-image-overlay"
-													style="">
-													<div class="elementor-custom-embed-play" role="button"
-														aria-label="Reproduzir vídeo" tabindex="0">
-														<svg aria-hidden="true"
-															class="e-font-icon-svg e-fas-play-circle"
-															viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z">
-															</path>
-														</svg>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="elementor-element elementor-element-4f6ce13  elementor-widget elementor-widget-heading"
-											data-id="4f6ce13" data-element_type="widget" data-e-type="widget"
-											data-widget_type="heading.default">
-											<p class="elementor-heading-title elementor-size-default"><span
-													class="deg">//</span> Aluno Hudson fez <b>R$15.343,77</b></p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide" data-slide="3" role="group" aria-roledescription="slide"
-								aria-label="3 of 3">
-								<div class="elementor-element elementor-element-2adf68c e-flex e-con-boxed e-con e-child"
-									data-id="2adf68c" data-element_type="container" data-e-type="container">
-									<div class="e-con-inner">
-										<div class="elementor-element elementor-element-b55f36f elementor-widget elementor-widget-video"
-											data-id="b55f36f" data-element_type="widget" data-e-type="widget"
-											data-settings="{" youtube_url":"https:\="" \="" youtu.be\=""
-											cy52syhjjje?si="TH2b5ceAefGA8hjC"
-											,"show_image_overlay":"yes","image_overlay":{"url":"https:\=""
-											guiadogui.com\="" wp-content\="" uploads\="" 2026\="" 04\=""
-											thumb.png","id":271,"size":"","alt":"","source":"library"},"video_type":"youtube"}""=""
-											data-widget_type="video.default">
-											<div class="elementor-wrapper elementor-open-inline">
-												<div class="elementor-video"></div>
-												<div style="background-image:url(https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/04/THUMB.png.webp); background-size:cover; background-position:center;"
-													class="elementor-custom-embed-image-overlay"
-													style="">
-													<div class="elementor-custom-embed-play" role="button"
-														aria-label="Reproduzir vídeo" tabindex="0">
-														<svg aria-hidden="true"
-															class="e-font-icon-svg e-fas-play-circle"
-															viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-															<path
-																d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm115.7 272l-176 101c-15.8 8.8-35.7-2.5-35.7-21V152c0-18.4 19.8-29.8 35.7-21l176 107c16.4 9.2 16.4 32.9 0 42z">
-															</path>
-														</svg>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="elementor-element elementor-element-4e94e5e  elementor-widget elementor-widget-heading"
-											data-id="4e94e5e" data-element_type="widget" data-e-type="widget"
-											data-widget_type="heading.default">
-											<p class="elementor-heading-title elementor-size-default"><span
-													class="deg">//</span> Aluno Kevin fez <b>R$30.000</b></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="swiper-pagination"></div>
-				</div>
+				
 				<div class="elementor-element elementor-element-0690b11 blur elementor-widget elementor-widget-image-carousel"
 					data-id="0690b11" data-element_type="widget" data-e-type="widget" data-settings="{"
 					slides_to_show":"4","slides_to_show_mobile":"2","navigation":"none","autoplay_speed":0,"speed":5000,"image_spacing_custom":{"unit":"px","size":10,"sizes":[]},"autoplay":"yes","infinite":"yes","image_spacing_custom_tablet":{"unit":"px","size":"","sizes":[]},"image_spacing_custom_mobile":{"unit":"px","size":"","sizes":[]}}"=""
@@ -2836,9 +2586,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="1 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="1 3 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/1-3-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/1-3-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/1-3-1.jpg.webp"
 											alt="1 3 (1)" /></noscript></figure>
@@ -2846,9 +2596,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="2 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="2 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/2-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/2-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/2-1-1.jpg.webp"
 											alt="2 1 (1)" /></noscript></figure>
@@ -2856,9 +2606,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="3 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="3 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/3-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/3-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/3-1-1.jpg.webp"
 											alt="3 1 (1)" /></noscript></figure>
@@ -2866,9 +2616,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="4 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="4 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/4-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/4-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/4-1-1.jpg.webp"
 											alt="4 1 (1)" /></noscript></figure>
@@ -2876,9 +2626,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="5 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="5 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/5-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/5-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/5-1-1.jpg.webp"
 											alt="5 1 (1)" /></noscript></figure>
@@ -2886,9 +2636,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="6 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="6 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/6-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/6-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/6-1-1.jpg.webp"
 											alt="6 1 (1)" /></noscript></figure>
@@ -2896,9 +2646,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="7 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="7 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/7-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/7-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/7-1-1.jpg.webp"
 											alt="7 1 (1)" /></noscript></figure>
@@ -2906,9 +2656,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="8 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="8 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/8-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/8-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/8-1-1.jpg.webp"
 											alt="8 1 (1)" /></noscript></figure>
@@ -2916,9 +2666,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="9 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="9 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/9-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/9-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/9-1-1.jpg.webp"
 											alt="9 1 (1)" /></noscript></figure>
@@ -2926,9 +2676,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="10 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="10 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/10-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/10-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/10-1-1.jpg.webp"
 											alt="10 1 (1)" /></noscript></figure>
@@ -2936,9 +2686,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="11 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="11 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/11-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/11-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/11-1-1.jpg.webp"
 											alt="11 1 (1)" /></noscript></figure>
@@ -2946,9 +2696,9 @@
 							<div class="swiper-slide" role="group" aria-roledescription="slide" aria-label="12 de 12">
 								<figure class="swiper-slide-inner"><img width="337" height="729" decoding="async"
 										class="swiper-slide-image"
-										
+										src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20337%20729'%3E%3C/svg%3E"
 										alt="12 1 (1)"
-										src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/12-1-1.jpg.webp"><noscript><img
+										data-lazy-src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/12-1-1.jpg.webp"><noscript><img
 											width="337" height="729" decoding="async" class="swiper-slide-image"
 											src="https://guiadogui.com/wp-content/webp-express/webp-images/uploads/2026/01/12-1-1.jpg.webp"
 											alt="12 1 (1)" /></noscript></figure>
@@ -2957,7 +2707,7 @@
 
 					</div>
 				</div>
-				<div class="elementor-element elementor-element-84037b6  elementor-widget elementor-widget-button"
+				<div class="elementor-element elementor-element-84037b6 scroll-bottom elementor-widget elementor-widget-button"
 					data-id="84037b6" data-element_type="widget" data-e-type="widget" data-widget_type="button.default">
 					<a class="elementor-button elementor-button-link elementor-size-sm" href="#oferta">
 						<span class="elementor-button-content-wrapper">
@@ -2977,7 +2727,7 @@
 		<div class="elementor-element elementor-element-e52db0e e-flex e-con-boxed e-con e-parent" data-id="e52db0e"
 			data-element_type="container" data-e-type="container" id="price">
 			<div class="e-con-inner">
-				<div class="elementor-element elementor-element-03f7940  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-03f7940 scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="03f7940" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Conteúdos</p>
@@ -2987,7 +2737,7 @@
 					data-widget_type="menu-anchor.default">
 					<div class="elementor-menu-anchor" id="oferta"></div>
 				</div>
-				<div class="elementor-element elementor-element-f265678 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-f265678 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="f265678" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default">Tudo o que você recebe ao entrar hoje no
@@ -3002,9 +2752,9 @@
 							data-id="0c3b878" data-element_type="widget" data-e-type="widget"
 							data-widget_type="image.default">
 							<img decoding="async" width="113" height="21"
-								
+								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20113%2021'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-40" alt=""
-								src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo.svg"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo.svg"><noscript><img
 									loading="lazy" decoding="async" width="113" height="21"
 									src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo.svg"
 									class="attachment-full size-full wp-image-40" alt="" /></noscript>
@@ -3013,14 +2763,14 @@
 							data-id="9ee1606" data-element_type="widget" data-e-type="widget"
 							data-widget_type="image.default">
 							<img decoding="async" width="324" height="368"
-								
+								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20324%20368'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-42" alt=""
-								src="https://guiadogui.com/wp-content/uploads/2026/01/7.svg"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/7.svg"><noscript><img
 									loading="lazy" decoding="async" width="324" height="368"
 									src="https://guiadogui.com/wp-content/uploads/2026/01/7.svg"
 									class="attachment-full size-full wp-image-42" alt="" /></noscript>
 						</div>
-						<div class="elementor-element elementor-element-2914d70 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+						<div class="elementor-element elementor-element-2914d70 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 							data-id="2914d70" data-element_type="widget" data-e-type="widget"
 							data-widget_type="heading.default">
 							<p class="elementor-heading-title elementor-size-default"><span
@@ -3028,7 +2778,7 @@
 										class="deg">7 dias</span> para decidir</span> se isso realmente faz sentido pra
 								você.</p>
 						</div>
-						<div class="elementor-element elementor-element-d97d4cc elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+						<div class="elementor-element elementor-element-d97d4cc elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 							data-id="d97d4cc" data-element_type="widget" data-e-type="widget"
 							data-widget_type="heading.default">
 							<p class="elementor-heading-title elementor-size-default">Acesse o treinamento, veja as
@@ -3043,28 +2793,28 @@
 							data-id="5d10999" data-element_type="widget" data-e-type="widget"
 							data-widget_type="image.default">
 							<img decoding="async" width="113" height="21"
-								
+								src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20113%2021'%3E%3C/svg%3E"
 								class="attachment-full size-full wp-image-41" alt=""
-								src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo-2.svg"><noscript><img
+								data-lazy-src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo-2.svg"><noscript><img
 									loading="lazy" decoding="async" width="113" height="21"
 									src="https://guiadogui.com/wp-content/uploads/2026/01/chanfro-topo-2.svg"
 									class="attachment-full size-full wp-image-41" alt="" /></noscript>
 						</div>
-						<div class="elementor-element elementor-element-f12c965  elementor-widget elementor-widget-heading"
+						<div class="elementor-element elementor-element-f12c965 scroll-bottom elementor-widget elementor-widget-heading"
 							data-id="f12c965" data-element_type="widget" data-e-type="widget"
 							data-widget_type="heading.default">
 							<p class="elementor-heading-title elementor-size-default">CONTEÚDOS</p>
 						</div>
 						<div class="elementor-element elementor-element-b077213 e-con-full e-flex e-con e-child"
 							data-id="b077213" data-element_type="container" data-e-type="container">
-							<div class="elementor-element elementor-element-0dee594 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-0dee594 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="0dee594" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default"><span
 										style="font-weight:700">Um método completo,</span> com suporte e estrutura, por
 									um valor acessível.</p>
 							</div>
-							<div class="elementor-element elementor-element-922b7d3  elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
+							<div class="elementor-element elementor-element-922b7d3 scroll-bottom elementor-widget-divider--view-line elementor-widget elementor-widget-divider"
 								data-id="922b7d3" data-element_type="widget" data-e-type="widget"
 								data-widget_type="divider.default">
 								<div class="elementor-divider">
@@ -3072,7 +2822,7 @@
 									</span>
 								</div>
 							</div>
-							<div class="elementor-element elementor-element-3dd2f7b elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-3dd2f7b elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="3dd2f7b" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default">você irá receber:</p>
@@ -3336,18 +3086,18 @@
 						</div>
 						<div class="elementor-element elementor-element-b0cb843 e-con-full e-flex e-con e-child"
 							data-id="b0cb843" data-element_type="container" data-e-type="container">
-							<div class="elementor-element elementor-element-bda6d8a elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-bda6d8a elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="bda6d8a" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default">POR 12X DE</p>
 							</div>
-							<div class="elementor-element elementor-element-ade368c elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-ade368c elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="ade368c" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default"><span
 										class="deg">R$30,44</span></p>
 							</div>
-							<div class="elementor-element elementor-element-19cfb01 elementor-widget__width-initial  elementor-widget elementor-widget-heading"
+							<div class="elementor-element elementor-element-19cfb01 elementor-widget__width-initial scroll-bottom elementor-widget elementor-widget-heading"
 								data-id="19cfb01" data-element_type="widget" data-e-type="widget"
 								data-widget_type="heading.default">
 								<p class="elementor-heading-title elementor-size-default">OU R$297,00 À VISTA</p>
@@ -3355,7 +3105,7 @@
 						</div>
 						<div class="elementor-element elementor-element-6e29ebc e-con-full e-flex e-con e-child"
 							data-id="6e29ebc" data-element_type="container" data-e-type="container">
-							<div class="elementor-element elementor-element-01832b1  elementor-widget elementor-widget-button"
+							<div class="elementor-element elementor-element-01832b1 scroll-bottom elementor-widget elementor-widget-button"
 								data-id="01832b1" data-element_type="widget" data-e-type="widget"
 								data-widget_type="button.default">
 								<a class="elementor-button elementor-button-link elementor-size-sm"
@@ -3380,13 +3130,13 @@
 		<div class="elementor-element elementor-element-88db873 e-flex e-con-boxed e-con e-parent" data-id="88db873"
 			data-element_type="container" data-e-type="container">
 			<div class="e-con-inner">
-				<div class="elementor-element elementor-element-f897523  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-f897523 scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="f897523" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><span style="font-weight:700"
 							class="deg">Perguntas</span> Frequentes</p>
 				</div>
-				<div class="elementor-element elementor-element-3afa9ce  elementor-widget elementor-widget-heading"
+				<div class="elementor-element elementor-element-3afa9ce scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="3afa9ce" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default">Sua melhor pergunta, <span
@@ -3685,11 +3435,11 @@
 				<div class="elementor-element elementor-element-e0605ac elementor-absolute elementor-widget elementor-widget-html"
 					data-id="e0605ac" data-element_type="widget" data-e-type="widget" data-settings="{"
 					_position":"absolute"}"="" data-widget_type="html.default">
-					
-					
+					<script data-minify="1" src="js/gsap.min.js" onload="nowprocket()"></script>
+					<script data-minify="1" src="js/ScrollTrigger.min.js" onload="nowprocket()"></script>
 
 					<script type="rocketlazyloadscript">
-    const elementos = document.querySelectorAll(".scroll-left, .scroll-right, .scroll-top, ., .blur, .lista .elementor-icon-list-item, .faq .e-n-accordion-item");
+    const elementos = document.querySelectorAll(".scroll-left, .scroll-right, .scroll-top, .scroll-bottom, .blur, .lista .elementor-icon-list-item, .faq .e-n-accordion-item");
     const posicaoScroll = window.innerHeight * 0.5;
     
     function fadeScroll(){
@@ -3824,8 +3574,10 @@
 	<script type="rocketlazyloadscript" data-minify="1"
 		data-rocket-src="https://guiadogui.com/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/js/hello-frontend.js?ver=1769713205"
 		id="hello-theme-frontend-js" data-rocket-defer="" defer=""></script>
-	
-	
+	<script src="https://guiadogui.com/wp-content/plugins/mousewheel-smooth-scroll/js/lenis.min.js?ver=1.1.19"
+		id="lenis-js" defer=""></script>
+	<script src="https://guiadogui.com/wp-content/uploads/wpmss/lenis-init.min.js?ver=1769663525" id="lenis-init-js"
+		defer=""></script>
 	<script type="rocketlazyloadscript"
 		data-rocket-src="https://guiadogui.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.0.5"
 		id="elementor-webpack-runtime-js" data-rocket-defer="" defer=""></script>
@@ -3868,12 +3620,95 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/guiadogui.com\/wp-admin\/
 	<script type="text/javascript"
 		src="https://guiadogui.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=3.34.3"
 		id="pro-elements-handlers-js" defer=""></script>
-	
-	
-	
+	<script>window.lazyLoadOptions = [{ elements_selector: "img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]", data_src: "lazy-src", data_srcset: "lazy-srcset", data_sizes: "lazy-sizes", class_loading: "lazyloading", class_loaded: "lazyloaded", threshold: 300, callback_loaded: function (element) { if (element.tagName === "IFRAME" && element.dataset.rocketLazyload == "fitvidscompatible") { if (element.classList.contains("lazyloaded")) { if (typeof window.jQuery != "undefined") { if (jQuery.fn.fitVids) { jQuery(element).parent().fitVids() } } } } } }, { elements_selector: ".rocket-lazyload", data_src: "lazy-src", data_srcset: "lazy-srcset", data_sizes: "lazy-sizes", class_loading: "lazyloading", class_loaded: "lazyloaded", threshold: 300, }]; window.addEventListener('LazyLoad::Initialized', function (e) {
+			var lazyLoadInstance = e.detail.instance; if (window.MutationObserver) {
+				var observer = new MutationObserver(function (mutations) {
+					var image_count = 0; var iframe_count = 0; var rocketlazy_count = 0; mutations.forEach(function (mutation) {
+						for (var i = 0; i < mutation.addedNodes.length; i++) {
+							if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') { continue }
+							if (typeof mutation.addedNodes[i].getElementsByClassName !== 'function') { continue }
+							images = mutation.addedNodes[i].getElementsByTagName('img'); is_image = mutation.addedNodes[i].tagName == "IMG"; iframes = mutation.addedNodes[i].getElementsByTagName('iframe'); is_iframe = mutation.addedNodes[i].tagName == "IFRAME"; rocket_lazy = mutation.addedNodes[i].getElementsByClassName('rocket-lazyload'); image_count += images.length; iframe_count += iframes.length; rocketlazy_count += rocket_lazy.length; if (is_image) { image_count += 1 }
+							if (is_iframe) { iframe_count += 1 }
+						}
+					}); if (image_count > 0 || iframe_count > 0 || rocketlazy_count > 0) { lazyLoadInstance.update() }
+				}); var b = document.getElementsByTagName("body")[0]; var config = { childList: !0, subtree: !0 }; observer.observe(b, config)
+			}
+		}, !1)</script>
+	<script data-no-minify="1" async="" src="js/lazyload.min.js"></script>
+	<script>function lazyLoadThumb(e, alt, l) { var t = '<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>', a = '<button class="play" aria-label="Executar vídeo do YouTube"></button>'; if (l) { t = t.replace('data-lazy-', ''); t = t.replace('loading="lazy"', ''); t = t.replace(/<noscript>.*?<\/noscript>/g, ''); } t = t.replace('alt=""', 'alt="' + alt + '"'); return t.replace("ID", e) + a } function lazyLoadYoutubeIframe() { var e = document.createElement("iframe"), t = "ID?autoplay=1"; t += 0 === this.parentNode.dataset.query.length ? "" : "&" + this.parentNode.dataset.query; e.setAttribute("src", t.replace("ID", this.parentNode.dataset.src)), e.setAttribute("frameborder", "0"), e.setAttribute("allowfullscreen", "1"), e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"), this.parentNode.parentNode.replaceChild(e, this.parentNode) } document.addEventListener("DOMContentLoaded", function () { var exclusions = []; var e, t, p, u, l, a = document.getElementsByClassName("rll-youtube-player"); for (t = 0; t < a.length; t++)(e = document.createElement("div")), (u = 'https://i.ytimg.com/vi/ID/hqdefault.jpg'), (u = u.replace('ID', a[t].dataset.id)), (l = exclusions.some(exclusion => u.includes(exclusion))), e.setAttribute("data-id", a[t].dataset.id), e.setAttribute("data-query", a[t].dataset.query), e.setAttribute("data-src", a[t].dataset.src), (e.innerHTML = lazyLoadThumb(a[t].dataset.id, a[t].dataset.alt, l)), a[t].appendChild(e), (p = e.querySelector(".play")), (p.onclick = lazyLoadYoutubeIframe) });</script>
 	<script>(() => { class RocketElementorPreload { constructor() { this.deviceMode = document.createElement("span"), this.deviceMode.id = "elementor-device-mode-wpr", this.deviceMode.setAttribute("class", "elementor-screen-only"), document.body.appendChild(this.deviceMode) } t() { let t = getComputedStyle(this.deviceMode, ":after").content.replace(/"/g, ""); this.animationSettingKeys = this.i(t), document.querySelectorAll(".elementor-invisible[data-settings]").forEach((t => { const e = t.getBoundingClientRect(); if (e.bottom >= 0 && e.top <= window.innerHeight) try { this.o(t) } catch (t) { } })) } o(t) { const e = JSON.parse(t.dataset.settings), i = e.m || e.animation_delay || 0, n = e[this.animationSettingKeys.find((t => e[t]))]; if ("none" === n) return void t.classList.remove("elementor-invisible"); t.classList.remove(n), this.currentAnimation && t.classList.remove(this.currentAnimation), this.currentAnimation = n; let o = setTimeout((() => { t.classList.remove("elementor-invisible"), t.classList.add("animated", n), this.l(t, e) }), i); window.addEventListener("rocket-startLoading", (function () { clearTimeout(o) })) } i(t = "mobile") { const e = [""]; switch (t) { case "mobile": e.unshift("_mobile"); case "tablet": e.unshift("_tablet"); case "desktop": e.unshift("_desktop") }const i = []; return ["animation", "_animation"].forEach((t => { e.forEach((e => { i.push(t + e) })) })), i } l(t, e) { this.i().forEach((t => delete e[t])), t.dataset.settings = JSON.stringify(e) } static run() { const t = new RocketElementorPreload; requestAnimationFrame(t.t.bind(t)) } } document.addEventListener("DOMContentLoaded", RocketElementorPreload.run) })();</script>
 
 	<span id="elementor-device-mode-wpr" class="elementor-screen-only"></span>
+
+
+
+
+	<script>
+(function() {
+  const isMobile = 'ontouchstart' in window || 
+                    window.matchMedia("(max-width: 1024px)").matches;
+
+  if (!isMobile) return; // Desktop: não faz nada
+
+  // 1. Força touch events passivos (corrige o WP Rocket passive:false)
+  const originalAddEventListener = EventTarget.prototype.addEventListener;
+  EventTarget.prototype.addEventListener = function(type, fn, options) {
+    if (type === 'touchmove' || type === 'touchstart') {
+      if (typeof options === 'object') {
+        options.passive = true;
+      } else {
+        options = { passive: true };
+      }
+    }
+    return originalAddEventListener.call(this, type, fn, options);
+  };
+
+  // 2. Destrói o Lenis assim que ele aparecer (cobre o lenis-init.min.js)
+  function destroyLenis() {
+    const instance = window.lenis || window.lenisInstance || 
+                     window.__lenis || window.smoothScroll;
+    if (instance && typeof instance.destroy === 'function') {
+      instance.destroy();
+      window.lenis = null;
+      window.lenisInstance = null;
+      // Restaura scroll nativo
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Tenta destruir em vários momentos para pegar o lenis-init
+  document.addEventListener('DOMContentLoaded', destroyLenis);
+  window.addEventListener('load', destroyLenis);
+  
+  // Polling de segurança por 5 segundos após load
+  window.addEventListener('load', function() {
+    let tentativas = 0;
+    const check = setInterval(function() {
+      destroyLenis();
+      tentativas++;
+      if (tentativas >= 20) clearInterval(check);
+    }, 250);
+  });
+
+  // 3. CSS via JS para garantir scroll nativo
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (max-width: 1024px) {
+      html, body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        scroll-behavior: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+</script>
+
+
+	
 </body>
 
 </html>
