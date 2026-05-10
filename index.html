@@ -996,6 +996,29 @@
 	<meta name="generator" content="WP Rocket 3.19.1.2"
 		data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_image_dimensions wpr_minify_css wpr_cdn wpr_preload_links wpr_desktop">
 	<style>
+		/* Substitui a imagem de fundo 'Low Ticket' do topo por sombra */
+		.elementor-19 .elementor-element.elementor-element-b44c121:not(.elementor-motion-effects-element-type-background),
+		.elementor-19 .elementor-element.elementor-element-b44c121 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+			background-image: none !important;
+			background-color: transparent !important;
+		}
+		.elementor-19 .elementor-element.elementor-element-b44c121 {
+			position: relative;
+		}
+		.elementor-19 .elementor-element.elementor-element-b44c121::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 100vw;
+			height: 800px;
+			background: radial-gradient(circle at center, rgba(2,224,206,0.15) 0%, transparent 60%);
+			filter: blur(60px);
+			pointer-events: none;
+			z-index: 0;
+		}
+
 		/* Círculo girando continuamente */
 		@keyframes giroContinuo {
 			from { transform: rotate(0deg); }
@@ -2607,7 +2630,13 @@
 						<div class="elementor-element elementor-element-bab28f8 blur elementor-widget elementor-widget-image"
 							data-id="bab28f8" data-element_type="widget" data-e-type="widget"
 							data-widget_type="image.default">
-							<div class="glow-effect-dmd" style="width: 100%; max-width: 800px; height: 600px; background: radial-gradient(circle, rgba(2,224,206,0.2) 0%, transparent 60%); filter: blur(60px); border-radius: 50%; margin: -50px auto 0 auto; position: relative; z-index: 0;"></div>
+							<img decoding="async" width="1214" height="668"
+								src="images/Design%20sem%20nome%20(24)%20(1).png"
+								class="attachment-full size-full wp-image-130" alt=""
+								data-lazy-src="images/Design%20sem%20nome%20(24)%20(1).png"><noscript><img
+									loading="lazy" decoding="async" width="1214" height="668"
+									src="images/Design%20sem%20nome%20(24)%20(1).png"
+									class="attachment-full size-full wp-image-130" alt="" /></noscript>
 						</div>
 						<div class="elementor-element elementor-element-787c282 elementor-absolute elementor-widget elementor-widget-image"
 							data-id="787c282" data-element_type="widget" data-e-type="widget" data-settings="{"
@@ -3924,10 +3953,7 @@
 	<script type="rocketlazyloadscript" data-minify="1"
 		data-rocket-src="https://guiadogui.com/wp-content/cache/min/1/wp-content/themes/hello-elementor/assets/js/hello-frontend.js?ver=1769713205"
 		id="hello-theme-frontend-js" data-rocket-defer="" defer=""></script>
-	<script src="https://guiadogui.com/wp-content/plugins/mousewheel-smooth-scroll/js/lenis.min.js?ver=1.1.19"
-		id="lenis-js" defer=""></script>
-	<script src="https://guiadogui.com/wp-content/uploads/wpmss/lenis-init.min.js?ver=1769663525" id="lenis-init-js"
-		defer=""></script>
+
 	<script type="rocketlazyloadscript"
 		data-rocket-src="https://guiadogui.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=4.0.5"
 		id="elementor-webpack-runtime-js" data-rocket-defer="" defer=""></script>
@@ -4059,33 +4085,7 @@ var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/guiadogui.com\/wp-admin\/
 				return originalAddEventListener.call(this, type, fn, options);
 			};
 
-			// 2. Destrói o Lenis assim que ele aparecer (cobre o lenis-init.min.js)
-			function destroyLenis() {
-				const instance = window.lenis || window.lenisInstance ||
-					window.__lenis || window.smoothScroll;
-				if (instance && typeof instance.destroy === 'function') {
-					instance.destroy();
-					window.lenis = null;
-					window.lenisInstance = null;
-					// Restaura scroll nativo
-					document.documentElement.style.overflow = '';
-					document.body.style.overflow = '';
-				}
-			}
 
-			// Tenta destruir em vários momentos para pegar o lenis-init
-			document.addEventListener('DOMContentLoaded', destroyLenis);
-			window.addEventListener('load', destroyLenis);
-
-			// Polling de segurança por 5 segundos após load
-			window.addEventListener('load', function () {
-				let tentativas = 0;
-				const check = setInterval(function () {
-					destroyLenis();
-					tentativas++;
-					if (tentativas >= 20) clearInterval(check);
-				}, 250);
-			});
 
 			// 3. CSS via JS para garantir scroll nativo
 			const style = document.createElement('style');
