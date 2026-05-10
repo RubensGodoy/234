@@ -996,6 +996,15 @@
 	<meta name="generator" content="WP Rocket 3.19.1.2"
 		data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_image_dimensions wpr_minify_css wpr_cdn wpr_preload_links wpr_desktop">
 	<style>
+		/* Ajuste leve na imagem de fundo do mobile (ampliar lados e descer mão) */
+		@media (max-width: 767px) {
+			.elementor-19 .elementor-element.elementor-element-b44c121:not(.elementor-motion-effects-element-type-background),
+			.elementor-19 .elementor-element.elementor-element-b44c121 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+				background-size: 150% !important; 
+				background-position: center bottom !important; 
+			}
+		}
+
 		/* Círculo girando continuamente */
 		@keyframes giroContinuo {
 			from { transform: rotate(0deg); }
