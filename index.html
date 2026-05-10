@@ -997,29 +997,39 @@
 		data-wpr-features="wpr_delay_js wpr_defer_js wpr_minify_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_image_dimensions wpr_minify_css wpr_cdn wpr_preload_links wpr_desktop">
 	<style>
 		/* Correção: Força exibição de elementos com lag e impede que sumam no scroll */
-		.scroll-left, .scroll-right, .scroll-top, .scroll-bottom,
-		.scroll-left *, .scroll-right *, .scroll-top *, .scroll-bottom * {
+		.scroll-left,
+		.scroll-right,
+		.scroll-top,
+		.scroll-bottom,
+		.scroll-left *,
+		.scroll-right *,
+		.scroll-top *,
+		.scroll-bottom * {
 			opacity: 1 !important;
 			transform: none !important;
 			transition: none !important;
 			animation: none !important;
 		}
+
 		.blur {
 			opacity: 1 !important;
 			filter: none !important;
 			/* Não aplicar 'animation: none' ou 'transform: none' aqui para não quebrar o giro do círculo */
 		}
+
 		.elementor-invisible {
 			visibility: visible !important;
 			opacity: 1 !important;
 		}
-		.elementor-motion-effects-element,
-		.elementor-motion-effects-layer,
-		.elementor-motion-effects-container {
+
+		.elementor-motion-effects-element:not(.elementor-element-f68720a),
+		.elementor-motion-effects-layer:not(.elementor-element-f68720a *),
+		.elementor-motion-effects-container:not(.elementor-element-f68720a *) {
 			transform: none !important;
 			opacity: 1 !important;
 		}
-		.animated {
+
+		.animated:not(.elementor-element-f68720a):not(.elementor-element-f68720a *) {
 			animation: none !important;
 		}
 	</style>
@@ -1818,8 +1828,8 @@
 				</div>
 			</div>
 		</div>
-		<div id="mecanismo" class="elementor-element elementor-element-e1d7137 e-flex e-con-boxed e-con e-parent" data-id="e1d7137"
-			data-element_type="container" data-e-type="container">
+		<div id="mecanismo" class="elementor-element elementor-element-e1d7137 e-flex e-con-boxed e-con e-parent"
+			data-id="e1d7137" data-element_type="container" data-e-type="container">
 			<div class="e-con-inner">
 				<div class="elementor-element elementor-element-93fe564 e-con-full e-flex e-con e-child"
 					data-id="93fe564" data-element_type="container" data-e-type="container">
@@ -2528,7 +2538,7 @@
 					<div class="elementor-element elementor-element-18a57f8 scroll-bottom elementor-widget elementor-widget-button"
 						data-id="18a57f8" data-element_type="widget" data-e-type="widget"
 						data-widget_type="button.default">
-						<a class="elementor-button elementor-button-link elementor-size-sm" href="#oferta">
+						<a class="elementor-button elementor-button-link elementor-size-sm" href="#resultados">
 							<span class="elementor-button-content-wrapper">
 								<span class="elementor-button-icon">
 									<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16"
@@ -2947,7 +2957,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="elementor-element elementor-element-afd6b12 scroll-bottom elementor-widget elementor-widget-heading"
+				<div id="resultados" class="elementor-element elementor-element-afd6b12 scroll-bottom elementor-widget elementor-widget-heading"
 					data-id="afd6b12" data-element_type="widget" data-e-type="widget"
 					data-widget_type="heading.default">
 					<p class="elementor-heading-title elementor-size-default"><span class="deg">//</span> Depoimentos
