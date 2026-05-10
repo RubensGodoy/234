@@ -3437,7 +3437,7 @@
 					<script data-minify="1" src="js/ScrollTrigger.min.js" onload="nowprocket()"></script>
 
 					<script type="rocketlazyloadscript">
-    const elementos = document.querySelectorAll(".scroll-left, .scroll-right, .scroll-top, .scroll-bottom, .blur, .lista .elementor-icon-list-item, .faq .e-n-accordion-item");
+  const elementos = document.querySelectorAll(".scroll-left, .scroll-right, .scroll-top, .scroll-bottom, .blur, .lista .elementor-icon-list-item");
     const posicaoScroll = window.innerHeight * 0.5;
     
     function fadeScroll(){
@@ -3447,9 +3447,7 @@
             if(elementoTop < 320){
                 elemento.classList.add("ativo");
             }
-            else {
-                elemento.classList.remove("ativo");
-            }
+        
         });
     }
     
