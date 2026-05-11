@@ -1,14 +1,14 @@
 /* Botão WhatsApp Flutuante */
 .whatsapp-fixed {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 68px;
-    height: 68px;
+    width: 60px;
+    height: 60px;
     background-color: #25d366;
     border-radius: 50%;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
@@ -21,7 +21,7 @@
 }
 
 .whatsapp-fixed svg {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     fill: #fff;
 }
