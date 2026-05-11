@@ -21,7 +21,8 @@
 }
 
 .whatsapp-fixed svg {
-    width: 38px;
-    height: 38px;
+    width: 32px;
+    height: 32px;
     fill: #fff;
+    margin-top: -2px;
 }
